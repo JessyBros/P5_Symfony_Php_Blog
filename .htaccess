@@ -1,0 +1,27 @@
+<files .htaccess>
+order allow,deny
+deny from all
+</files>
+
+#--------------------------------------------------
+# Répertoire : /Blog Professionnel/
+#--------------------------------------------------
+
+# Le serveur doit suivre les liens symboliques :
+Options +FollowSymlinks
+
+# Activation du module de réécriture d'URL :
+RewriteEngine on
+
+
+ErrorDocument 404 view/404page.html
+
+#--------------------------------------------------
+# Règles de réécriture d'URL : 
+#--------------------------------------------------
+
+
+RewriteRule ^$ index.php?action=home
+RewriteRule ^listeBlog$ index.php?action=listeBlog
+
+
