@@ -21,7 +21,7 @@ ErrorDocument 404 view/404page.html
 #--------------------------------------------------
 
 
-RewriteRule ^$ index.php?action=home
+RewriteRule ^$ index.php?action=accueil
 RewriteRule ^listeBlog$ index.php?action=listeBlog
 
 
