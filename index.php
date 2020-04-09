@@ -1,4 +1,5 @@
 <?php
+require "vendor/autoload.php";
 require "controller/frontend.php";
 
 switch ($_GET['action']) {
@@ -10,8 +11,6 @@ switch ($_GET['action']) {
 	case 'listeBlog':
 		echo "Liste des blogs";
 		break;
-
-
 
 	default:
 		echo "page d'accueil";
