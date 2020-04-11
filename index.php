@@ -3,6 +3,7 @@ require "vendor/autoload.php";
 require "controller/frontend.php";
 
 
+
 switch ($_GET['action']) {
 
 	case 'accueil':
