@@ -7,8 +7,8 @@ require "view/viewAccueil.php";
 
 }
 
- function listeBlog(){
+ function blogs(){
 
-require "view/viewListeBlog.php";
+require "view/viewBlogs.php";
 
 }

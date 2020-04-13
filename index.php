@@ -9,8 +9,8 @@ switch ($_GET['action']) {
 		accueil();
 		break;
 
-	case 'listeBlog':
-		listeBlog();
+	case 'blogs':
+		blogs();
 		break;
 
 	default:
