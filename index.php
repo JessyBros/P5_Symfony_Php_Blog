@@ -1,7 +1,6 @@
 <?php
 require "vendor/autoload.php";
-require "controller/frontend.php";
-
+require "controller/controller.php";
 
 switch ($_GET['action']) {
 

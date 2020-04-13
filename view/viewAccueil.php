@@ -4,7 +4,7 @@
 
 	<h1>Développeur web</h1>
 	<p>Un développeur qui transcende les limites !</p>
-	
+
 	<div>
 		<img src="" alt="Photo de jessy | Blog développeur web">
 		<p><strong>Jessy BROS - </strong>Développeur web Développeurweb Back-end </p>
@@ -21,15 +21,15 @@
 
 	<h2>Les derniers blogs</h2>
 
-	<article>blog1</article>
-	<article>blog2</article>
-	<article>blog3</article>
-	<article>blog4</article>
+	     <?php  foreach ($lesDerniersBlogs as $blog ): ?>
+
+			<article> Blog <?= htmlspecialchars($blog['id']) ?></article>
+
+		<?php endforeach; ?>
 
 	<button>Voir tous les blogs existants</button>
 
 </section>
-
 
 <section id="contact_form">
 <h2>Contactez-moi</h2>
@@ -45,13 +45,11 @@
 
 <textarea id="message" rows="4" cols="50" placeholder="Votre message..."></textarea><br>
 
-	
 	<input type="submit" name="submit" id="submit" value"Envoyer"><br>
 
 </form>
 
 </section>
-
 
 <?php $content = ob_get_clean(); ?>
 

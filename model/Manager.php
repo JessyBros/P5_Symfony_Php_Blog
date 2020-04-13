@@ -12,6 +12,7 @@ class Manager
         {
                 die('Erreur : '.$e->getMessage());
         }
+        return $bdd;
 
     }
 

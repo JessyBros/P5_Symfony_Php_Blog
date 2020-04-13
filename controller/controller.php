@@ -3,17 +3,19 @@
 require('model/Autoloader.php');
 Autoloader::register();
 
+function accueil()
+{
 
+    $lesDerniersBlogsManager = new FunctionsSql();
+    $lesDerniersBlogs = $lesDerniersBlogsManager -> lesDerniersBlogs();
 
-
-function accueil(){
-
-require "view/viewAccueil.php";
+    require "view/viewAccueil.php";
 
 }
 
- function blogs(){
+ function blogs()
+ {
 
-require "view/viewBlogs.php";
+    require "view/viewBlogs.php";
 
 }
