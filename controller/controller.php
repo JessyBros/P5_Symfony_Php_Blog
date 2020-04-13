@@ -1,5 +1,10 @@
 <?php
-require "model/Manager.php";
+
+require('model/Autoloader.php');
+Autoloader::register();
+
+
+
 
 function accueil(){
 
