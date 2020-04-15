@@ -23,5 +23,6 @@ ErrorDocument 404 view/404page.html
 
 RewriteRule ^$ index.php?action=accueil
 RewriteRule ^blogs$ index.php?action=blogs
+RewriteRule blog-([0-9]+)$ index.php?action=blog&numero=$1
 
 

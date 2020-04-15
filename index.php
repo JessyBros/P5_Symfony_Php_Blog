@@ -12,6 +12,10 @@ switch ($_GET['action']) {
 		blogs();
 		break;
 
+		case 'blog':
+		blog();		
+		break;
+
 	default:
 		accueil();
 		break;
