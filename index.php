@@ -16,6 +16,14 @@ switch ($_GET['action']) {
 		blog();		
 		break;
 
+		case 'connexion':
+		connexion();		
+		break;
+
+		case 'inscription':
+		inscription();		
+		break;
+
 	default:
 		accueil();
 		break;

@@ -13,7 +13,10 @@
 	        <nav>
 		        <a href="http://localhost/p5_symfony_php_blog/">Accueil</a>
 		        <a href="blogs">Blogs</a>
+		        <a href="connexion">connexion</a>
+		        <a href="inscription">inscription</a>
 	        </nav>
+
         </header>
 
         <?= $content ?>

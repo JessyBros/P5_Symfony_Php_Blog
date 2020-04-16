@@ -26,4 +26,29 @@ class FunctionsSql extends Manager
         return $post;
     }
 
+
+    public function inscription($nom, $prenom, $email, $mdp)
+    {
+         $connexion = $this-> connexionBdd($nom, $prenom, $email, $mdp);
+         $req = $connexion->prepare('INSERT INTO visiteur SET nom = ?, prenom = ?, email = ?, motDePasse = ? ');
+         $req->execute(array(
+             $nom,
+             $prenom,
+             $email,
+             $mdp
+	     ));
+         return $req;
+	}
+
+    public function connexion($email)
+    {
+         $connexion = $this->connexionBdd($email);
+         $req = $connexion->prepare('SELECT email, motDePasse FROM administrateur WHERE email= ?');
+         $req->execute(array(
+            $email     
+         ));
+
+        return $req;
+	}
+
 }

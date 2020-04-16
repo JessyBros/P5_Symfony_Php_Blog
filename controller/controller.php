@@ -32,3 +32,22 @@ $blog = $blogManager-> blog($idBlog);
 
 require "view/viewBlog.php";
 }
+
+function connexion()
+{
+
+require "view/viewConnexion.php";
+}
+
+
+function inscription()
+{
+    
+
+    $inscriptionManager = new FunctionsSql();
+    
+    require "public/functions/inscription.php"; 
+    
+
+    require "view/viewInscription.php";
+}
