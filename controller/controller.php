@@ -26,17 +26,23 @@ function accueil()
 function blog()
 {
 
-$blogManager = new FunctionsSql;
-$idBlog  = isset($_GET['numero']) ? $_GET['numero'] : NULL;
-$blog = $blogManager-> blog($idBlog);
+    $blogManager = new FunctionsSql;
+    $idBlog  = isset($_GET['numero']) ? $_GET['numero'] : NULL;
+    $blog = $blogManager-> blog($idBlog);
 
-require "view/viewBlog.php";
+    require "view/viewBlog.php";
 }
 
 function connexion()
 {
 
-require "view/viewConnexion.php";
+    $connexionManager = new FunctionsSql;
+    $email  = isset($_POST['email']) ? $_POST['email'] : NULL;
+	$connexion = $connexionManager-> connexionAdministrateur($email); 
+
+    require "public/functions/connexion.php";
+
+    require "view/viewConnexion.php";
 }
 
 

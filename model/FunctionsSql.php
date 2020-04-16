@@ -40,15 +40,15 @@ class FunctionsSql extends Manager
          return $req;
 	}
 
-    public function connexion($email)
+    public function connexionAdministrateur($email)
     {
          $connexion = $this->connexionBdd($email);
          $req = $connexion->prepare('SELECT email, motDePasse FROM administrateur WHERE email= ?');
          $req->execute(array(
             $email     
          ));
-
-        return $req;
+         $post = $req->fetch();
+         return $post;
 	}
 
 }
