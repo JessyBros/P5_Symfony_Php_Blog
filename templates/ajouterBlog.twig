@@ -1,0 +1,17 @@
+<?php ob_start(); ?>
+
+<h1>Ajouter un blog</h1>
+
+id
+titre 
+auteur
+chapo
+contenu
+image
+date
+dateMiseAJour
+administrateur_id (voir pour clé étranger JOIN )
+
+<?php $content = ob_get_clean(); ?>
+
+<?php require('view/template.php'); ?>

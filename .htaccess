@@ -14,7 +14,7 @@ Options +FollowSymlinks
 RewriteEngine on
 
 
-ErrorDocument 404 view/404page.html
+ErrorDocument 404 /templates/blog/404.twig
 
 #--------------------------------------------------
 # Règles de réécriture d'URL : 
@@ -26,4 +26,5 @@ RewriteRule ^blogs$ index.php?action=blogs
 RewriteRule blog-([0-9]+)$ index.php?action=blog&numero=$1
 RewriteRule ^connexion$ index.php?action=connexion
 RewriteRule ^inscription$ index.php?action=inscription
+RewriteRule ^ajouter-un-blog$ index.php?action=ajouter-un-blog
 

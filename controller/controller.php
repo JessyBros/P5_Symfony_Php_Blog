@@ -3,57 +3,65 @@
 require('model/Autoloader.php');
 Autoloader::register();
 
-function accueil()
-{
 
-    $lesDerniersBlogsManager = new FunctionsSql();
-    $lesDerniersBlogs = $lesDerniersBlogsManager -> lesDerniersBlogs();
+ class Controller {
 
-    require "view/viewAccueil.php";
 
-}
+    public function accueil($twig)
+    {
+        $lesDerniersBlogs = new FunctionsSql;
 
- function blogs()
+         echo $twig->render('accueil.twig',["lesDerniersBlogs" => $lesDerniersBlogs-> lesDerniersBlogs()]);
+
+    }
+
+    public function blogs($twig)
  {
     $listeDesBlogsManager = new FunctionsSql();
     $listeDesBlogs = $listeDesBlogsManager -> listeDesBlogs();
 
-    require "view/viewBlogs.php";
+    echo $twig->render('blogs.twig');
 
 }
- 
 
-function blog()
+public function blog($twig)
 {
 
     $blogManager = new FunctionsSql;
     $idBlog  = isset($_GET['numero']) ? $_GET['numero'] : NULL;
     $blog = $blogManager-> blog($idBlog);
 
-    require "view/viewBlog.php";
+    echo $twig->render('blog.twig');
 }
 
-function connexion()
+public function connexion($twig)
 {
 
     $connexionManager = new FunctionsSql;
     $email  = isset($_POST['email']) ? $_POST['email'] : NULL;
-	$connexion = $connexionManager-> connexionAdministrateur($email); 
+	$connexion = $connexionManager-> connexionAdministrateur($email);
 
     require "public/functions/connexion.php";
 
-    require "view/viewConnexion.php";
+   echo $twig->render('connexion.twig');
 }
 
-
-function inscription()
+public function inscription($twig)
 {
-    
 
     $inscriptionManager = new FunctionsSql();
-    
-    require "public/functions/inscription.php"; 
-    
 
-    require "view/viewInscription.php";
+    require "public/functions/inscription.php";
+
+    echo $twig->render('inscription.twig');
+}
+
+/* Espace ADMINISTRATION*/
+public function ajouterUnBlog($twig)
+ {
+     echo $twig->render('ajouterBlog.twig');
+ }
+
+
+
 }
