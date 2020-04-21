@@ -49,6 +49,21 @@ class FunctionsSql extends Manager
          ));
          $post = $req->fetch();
          return $post;
-	}
+    }
+    
+
+    public function ajouterBlog($titre, $auteur, $chapo, $contenu, $image)
+    {
+        $connexion = $this-> connexionBdd($titre, $auteur, $chapo, $contenu, $image);
+        $req = $connexion->prepare('INSERT INTO blog SET titre = ?, auteur = ?, chapo = ?, contenu = ?, date = Now() , image = ? ');
+        $req->execute(array(
+            $titre,
+            $auteur,
+            $chapo,
+            $contenu,
+            $image
+        ));
+        return $req;
+    }
 
 }

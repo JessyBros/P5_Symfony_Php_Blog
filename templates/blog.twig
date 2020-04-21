@@ -1,16 +1,18 @@
-<?php ob_start(); ?>
+{% extends "base.twig" %}
 
-<h1>test</h1>
+{% block content %}
 
 
-<p><?= $blog['id'];?></p>
-<p><?= $blog['titre'];?></p>
-<p><?= $blog['chapo'];?></p>
-<p><?= $blog['contenu'];?></p>
-<p><?= $blog['date'];?></p>
-<p><?= $blog['image'];?></p>
-<p><?= $blog['dateMiseAJour'];?></p>
+<h1>Mon Blog </h1>
 
-<?php $content = ob_get_clean(); ?>
 
-<?php require('view/template.php'); ?>
+<p> {{ blog.id }}</p>
+<p> {{ blog.titre }}</p>
+<p> {{ blog.chapo }}</p>
+<p> {{ blog.contenu | raw }}</p>
+<p> {{ blog.date }}</p>
+<img src="public/images/blogs/{{ blog.image }}" />
+<p> {{ blog.dateMiseAJour }}</p>
+
+
+{% endblock %}

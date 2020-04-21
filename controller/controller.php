@@ -17,21 +17,19 @@ Autoloader::register();
 
     public function blogs($twig)
  {
-    $listeDesBlogsManager = new FunctionsSql();
-    $listeDesBlogs = $listeDesBlogsManager -> listeDesBlogs();
+    $listeDesBlogs = new FunctionsSql();
 
-    echo $twig->render('blogs.twig');
+    echo $twig->render('blogs.twig',["listeDesBlogs" => $listeDesBlogs -> listeDesBlogs()]);
 
 }
 
 public function blog($twig)
 {
 
-    $blogManager = new FunctionsSql;
+    $blog = new FunctionsSql;
     $idBlog  = isset($_GET['numero']) ? $_GET['numero'] : NULL;
-    $blog = $blogManager-> blog($idBlog);
-
-    echo $twig->render('blog.twig');
+    
+    echo $twig->render('blog.twig',["blog"=> $blog ->blog($idBlog)]);
 }
 
 public function connexion($twig)
@@ -39,6 +37,7 @@ public function connexion($twig)
 
     $connexionManager = new FunctionsSql;
     $email  = isset($_POST['email']) ? $_POST['email'] : NULL;
+
 	$connexion = $connexionManager-> connexionAdministrateur($email);
 
     require "public/functions/connexion.php";
@@ -59,7 +58,12 @@ public function inscription($twig)
 /* Espace ADMINISTRATION*/
 public function ajouterUnBlog($twig)
  {
-     echo $twig->render('ajouterBlog.twig');
+     $ajouterBlogManager = new FunctionsSql;
+     require "public/functions/ajouterBlog.php";
+     
+
+     echo $twig->render('ajouterBlog.twig',["messageServeur" => $messageServeur]);
+     
  }
 
 

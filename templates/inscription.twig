@@ -1,5 +1,6 @@
-<?php ob_start(); ?>
+{% extends "base.twig" %}
 
+{% block content %}
 <h1>inscription</h1>
 
 <form action="" method="post">
@@ -7,7 +8,7 @@
 	<label for="nom">Votre Nom</label>
 	<input type="nom" name="nom" id="nom"><br>
 
-	<label for="prenom">Votre Prénom</label>
+	<label for="prenom">Votre Prï¿½nom</label>
 	<input type="prenom" name="prenom" id="prenom"><br>
 
 	<label for="email">Votre Email</label>
@@ -25,6 +26,4 @@
 
 </form>
 
-<?php $content = ob_get_clean(); ?>
-
-<?php require('view/template.php'); ?>
+{% endblock %}

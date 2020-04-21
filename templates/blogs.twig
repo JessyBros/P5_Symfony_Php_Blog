@@ -1,14 +1,14 @@
-<?php ob_start(); ?>
+{% extends "base.twig" %}
+
+{% block content %}
+
+	
 
 <h1>Liste des blogs</h1>
 
+{% for blog in listeDesBlogs %}
+		<a href= "blog-{{ blog.id }}">	<article> Blog : {{ blog.id }}</article> </a>
+    {% endfor %}
 
-	<?php  foreach ($listeDesBlogs as $blog ): ?>
 
-	<a href= "blog-<?= htmlspecialchars($blog['id']) ?>">	<article> Blog <?= htmlspecialchars($blog['id']) ?></article> </a>
-
-	<?php endforeach; ?>
-
-<?php $content = ob_get_clean(); ?>
-
-<?php require('view/template.php'); ?>
+{% endblock %}

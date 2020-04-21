@@ -1,4 +1,6 @@
-<?php ob_start(); ?>
+{% extends "base.twig" %}
+
+{% block content %}
 
 <h1>connexion</h1>
 
@@ -16,6 +18,4 @@
 </form>
 
 
-<?php $content = ob_get_clean(); ?>
-
-<?php require('view/template.php'); ?>
+{% endblock %}

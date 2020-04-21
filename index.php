@@ -14,20 +14,19 @@ $twig = new \Twig\Environment($loader,[
 
 	/* class Routeur{
 
-		public $twig;
+		public $twig = 5;
 
 		public function __construct($twig){
 			$this->twig = $twig;
 		}
 	
 		
-	
+		
+	$twigs = new Routeur($twig);
 	}  
-	
 	*/
 
-	
-	$twigs = new Routeur($twig);
+
 	
 
 
