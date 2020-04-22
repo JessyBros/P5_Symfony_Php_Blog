@@ -66,4 +66,16 @@ class FunctionsSql extends Manager
         return $req;
     }
 
+    public function modifierBlog($titre, $chapo, $contenu)
+    {
+        $connexion = $this-> connexionBdd($titre, $chapo, $contenu);
+        $req = $connexion->prepare('UPDATE blog SET titre = ?, chapo = ?, contenu = ?, dateMiseAJour = Now()');
+        $req->execute(array(
+            $titre,
+            $chapo,
+            $contenu
+        ));
+        return $req;
+    }
+
 }

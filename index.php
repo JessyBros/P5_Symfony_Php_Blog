@@ -34,33 +34,43 @@ $twig = new \Twig\Environment($loader,[
 		
 			case 'accueil':
 		
-				$test = new Controller;
-				$test -> accueil($twig);
+				$page = new Controller;
+				$page -> accueil($twig);
 				break;
 		
-			case 'blogs':
-				$test = new Controller;
-				$test ->blogs($twig);
+				case 'blogs':
+				$page = new Controller;
+				$page ->blogs($twig);
 				break;
 		
 				case 'blog':
-					$test = new Controller;
-					$test ->blog($twig);
+				$page = new Controller;
+				$page ->blog($twig);
 				break;
 		
 				case 'connexion':
-					$test = new Controller;
-					$test ->connexion($twig);
+				$page = new Controller;
+				$page ->connexion($twig);
 				break;
 		
 				case 'inscription':
-					$test = new Controller;
-					$test ->inscription($twig);
+				$page = new Controller;
+				$page ->inscription($twig);
 				break;
 		
 				case 'ajouter-un-blog';
-				$test = new Controller;
-				$test ->ajouterUnBlog($twig);
+				$page = new Controller;
+				$page ->ajouterUnBlog($twig);
+				break;
+
+				case 'modifier-blogs':
+				$page = new Controller;
+				$page ->modifierBlogs($twig);
+				break;
+
+				case 'modifier-blog':
+				$page = new Controller;
+				$page ->modifierBlog($twig);
 				break;
 		
 				default:

@@ -1,0 +1,14 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	
+
+<h1>Liste des blogs</h1>
+
+{% for blog in listeDesBlogs %}
+		<a href= "modifier-blog-{{ blog.id }}">	<article> Blog : {{ blog.id }}</article> </a>
+    {% endfor %}
+
+
+{% endblock %}
