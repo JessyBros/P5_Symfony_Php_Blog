@@ -3,7 +3,7 @@
 if ( isset($_POST["submit"]) )
 {
     $titre  = isset($_POST['titre']) ? $_POST['titre'] : NULL;
-    $auteur  = isset($_POST['auteur']) ? $_POST['auteur'] : NULL;
+    $auteur  = isset($_SESSION['auteur']) ? $_SESSION['auteur'] : NULL;
     $chapo  = isset($_POST['chapo']) ? $_POST['chapo'] : NULL;
     $contenu  = isset($_POST['contenu']) ? $_POST['contenu'] : NULL;
 	$image  = isset($_FILES['image']['name']) ? $_FILES['image']['name'] : NULL;

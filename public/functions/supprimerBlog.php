@@ -4,6 +4,8 @@ if ( isset($_POST["supprimerSubmit"]) )
 {
 	
 	$supprimerBlog = $supprimerBlogManager -> supprimerBlog($idBlog);
+	header("Location:modifier-blogs");
+	exit;
 
 	if( $supprimerBlog )
 	{

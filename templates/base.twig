@@ -13,8 +13,13 @@
 	        <nav>
 		        <a href="http://localhost/p5_symfony_php_blog/">Accueil</a>
 		        <a href="blogs">Blogs</a>
-		        <a href="connexion">connexion</a>
-		        <a href="inscription">inscription</a>
+
+                {% if session.connecter  %}
+                    <a href="public/functions/deconnexion.php">deconnexion</a>
+                {% else %}
+                    <a href="connexion">connexion</a>
+                    <a href="inscription">inscription</a>
+                {% endif  %}
 	        </nav>
 
         </header>
@@ -41,11 +46,14 @@
                     </li>
                 </ul>
 
-            <nav>
-                <a href="ajouter-un-blog">Ajouter un blog</a>
-                <a href="modifier-blogs">Blogs</a>
-            <nav>
-                <p>COPYRIGHT � <?php echo date("Y"); ?> - Jessy BROS</p>
+             {% if session.connecter  %}
+                <nav>
+                    <a href="ajouter-un-blog">Ajouter un blog</a>
+                    <a href="modifier-blogs">Blogs</a>
+                <nav>
+            {% endif %}
+
+                <p>COPYRIGHT {{ "now"|date("Y") }} - Jessy BROS</p>
             <div>
         </footer>
 

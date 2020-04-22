@@ -11,7 +11,7 @@ class Controller {
     {
         $lesDerniersBlogs = new FunctionsSql;
 
-        echo $twig->render('visiteur/accueil.twig',["lesDerniersBlogs" => $lesDerniersBlogs-> lesDerniersBlogs()]);
+        echo $twig->render('visiteur/accueil.twig',["lesDerniersBlogs" => $lesDerniersBlogs-> lesDerniersBlogs(), "sessionID" =>$_SESSION["id"]]);
     }
 
     public function blogs($twig)
@@ -47,9 +47,12 @@ class Controller {
         echo $twig->render('visiteur/inscription.twig');
     }
 
+
+
     /* Espace ADMINISTRATION*/
     public function ajouterUnBlog($twig)
     {
+        require "public/functions/verificationConnexion.php";
         $ajouterBlogManager = new FunctionsSql;
         require "public/functions/ajouterBlog.php";
 
@@ -59,6 +62,7 @@ class Controller {
  
     public function modifierBlogs($twig)
     {
+        require "public/functions/verificationConnexion.php";
         $listeDesBlogs = new FunctionsSql();
 
         echo $twig->render('admin/modifierBlogs.twig',["listeDesBlogs" => $listeDesBlogs -> listeDesBlogs()]);
@@ -68,6 +72,7 @@ class Controller {
 
     public function modifierBlog($twig)
     {
+        require "public/functions/verificationConnexion.php";
         $blog = new FunctionsSql;
         $idBlog  = isset($_GET['numero']) ? $_GET['numero'] : NULL;
 

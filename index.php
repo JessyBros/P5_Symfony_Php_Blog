@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 
 require "controller/controller.php";
 
@@ -6,29 +8,11 @@ require_once "vendor/autoload.php";
 
 /* Je vais chercher les fichiers dans le dossier templates */
 $loader = new Twig_Loader_Filesystem(__DIR__ . "/templates");
-
-/* J'appel l'environnement twig */
 $twig = new \Twig\Environment($loader,[
 	'cache' => false /*__DIR__ . '/tmp'*/]);
 
-
-	/* class Routeur{
-
-		public $twig = 5;
-
-		public function __construct($twig){
-			$this->twig = $twig;
-		}
-	
-		
-		
-	$twigs = new Routeur($twig);
-	}  
-	*/
-
-
-	
-
+	/* add session */
+$twig->addGlobal('session', $_SESSION);
 
 		switch ($_GET['action']) {
 		

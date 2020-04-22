@@ -8,6 +8,9 @@ if( isset($_POST["submit"]) )
 
 	if ($mdp == $connexion["motDePasse"])
 	{
+		$_SESSION['connecter'] = true;
+		$_SESSION['id'] = $connexion['id'];
+		$_SESSION['auteur'] = $connexion['prenom'] . " " . $connexion['nom'];
 		header('Location:http://localhost/p5_symfony_php_blog/');
 		exit;
 	}
