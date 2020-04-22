@@ -78,4 +78,14 @@ class FunctionsSql extends Manager
         return $req;
     }
 
+    public function supprimerBlog($idBlog)
+    {
+        $connexion = $this-> connexionBdd($idBlog);
+        $req = $connexion->prepare('DELETE FROM blog WHERE id = ?');
+        $req->execute(array(
+            $idBlog
+        ));
+        return $req;
+    }
+
 }

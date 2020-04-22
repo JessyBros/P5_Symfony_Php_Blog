@@ -1,6 +1,6 @@
 <?php
 
-if ( isset($_POST["submit"]) )
+if ( isset($_POST["modifierSubmit"]) )
 {
     $titre  = isset($_POST['titre']) ? $_POST['titre'] : NULL;
     $chapo  = isset($_POST['chapo']) ? $_POST['chapo'] : NULL;
