@@ -1,76 +1,81 @@
 <?php
 
-require('model/Autoloader.php');
-Autoloader::register();
+namespace App\Controller;
 
+use App\Model\FunctionsSql;
 
-class Controller {
+class Controller
+{
+    
+    private  $twig;
 
+    public  function __construct($twig)
+    {
+        $this->twig =$twig;
+    }
 
-    public function accueil($twig)
+    public function accueil()
     {
         $lesDerniersBlogs = new FunctionsSql;
-
-        echo $twig->render('visiteur/accueil.twig',["lesDerniersBlogs" => $lesDerniersBlogs-> lesDerniersBlogs(), "sessionID" =>$_SESSION["id"]]);
+        echo $this->twig->render('visiteur/accueil.twig',["lesDerniersBlogs" => $lesDerniersBlogs-> lesDerniersBlogs(), "sessionAuteur" =>$_SESSION["auteur"]]);
     }
 
-    public function blogs($twig)
+    public function blogs()
     {
         $listeDesBlogs = new FunctionsSql();
-
-        echo $twig->render('visiteur/blogs.twig',["listeDesBlogs" => $listeDesBlogs -> listeDesBlogs()]);
+        echo $this->twig->render('visiteur/blogs.twig',["listeDesBlogs" => $listeDesBlogs -> listeDesBlogs()]);
     }
 
-    public function blog($twig)
+    public function blog()
     {
         $blog = new FunctionsSql;
         $idBlog  = isset($_GET['numero']) ? $_GET['numero'] : NULL;
 
-        echo $twig->render('visiteur/blog.twig',["blog"=> $blog ->blog($idBlog)]);
+        echo $this->twig->render('visiteur/blog.twig',["blog"=> $blog ->blog($idBlog)]);
     }
 
-    public function connexion($twig)
+    public function connexion()
     {
         $connexionManager = new FunctionsSql;
         $email  = isset($_POST['email']) ? $_POST['email'] : NULL;
 	    $connexion = $connexionManager-> connexionAdministrateur($email);
         require "public/functions/connexion.php";
 
-        echo $twig->render('visiteur/connexion.twig');
+        echo $this->twig->render('visiteur/connexion.twig');
     }
 
-    public function inscription($twig)
+    public function inscription()
     {
         $inscriptionManager = new FunctionsSql();
         require "public/functions/inscription.php";
 
-        echo $twig->render('visiteur/inscription.twig');
+        echo $this->twig->render('visiteur/inscription.twig');
     }
 
 
+    /* Espace ADMINISTRATION */
 
-    /* Espace ADMINISTRATION*/
-    public function ajouterUnBlog($twig)
+    public function ajouterUnBlog()
     {
         require "public/functions/verificationConnexion.php";
         $ajouterBlogManager = new FunctionsSql;
         require "public/functions/ajouterBlog.php";
 
-        echo $twig->render('admin/ajouterBlog.twig',["messageServeur" => $messageServeur]);
+        echo $this->twig->render('admin/ajouterBlog.twig',["messageServeur" => $messageServeur]);
     }
 
  
-    public function modifierBlogs($twig)
+    public function modifierBlogs()
     {
         require "public/functions/verificationConnexion.php";
         $listeDesBlogs = new FunctionsSql();
 
-        echo $twig->render('admin/modifierBlogs.twig',["listeDesBlogs" => $listeDesBlogs -> listeDesBlogs()]);
+        echo $this->twig->render('admin/modifierBlogs.twig',["listeDesBlogs" => $listeDesBlogs -> listeDesBlogs()]);
     }
 
 
 
-    public function modifierBlog($twig)
+    public function modifierBlog()
     {
         require "public/functions/verificationConnexion.php";
         $blog = new FunctionsSql;
@@ -82,9 +87,7 @@ class Controller {
         $supprimerBlogManager = new FunctionsSql;
         require "public/functions/supprimerBlog.php";
         
-        echo $twig->render('admin/modifierBlog.twig',["blog"=> $blog ->blog($idBlog),"messageServeur" => $messageServeur ]);
+        echo $this->twig->render('admin/modifierBlog.twig',["blog"=> $blog ->blog($idBlog),"messageServeur" => $messageServeur ]);
     }
-
-
 
 }

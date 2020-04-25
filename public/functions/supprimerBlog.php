@@ -1,21 +1,15 @@
 <?php
 
-if ( isset($_POST["supprimerSubmit"]) )
-{
-	
+if (isset($_POST["supprimerSubmit"])) {
 	$supprimerBlog = $supprimerBlogManager -> supprimerBlog($idBlog);
 	header("Location:modifier-blogs");
 	exit;
 
-	if( $supprimerBlog )
-	{
+	if ($supprimerBlog) {
 		$messageServeur ="Le blog a bien été supprimé !";
-	}
-	else
-	{
-	$messageServeur = "Erreur lors de la suppression du blog !";
+	} else {
+		$messageServeur = "Erreur lors de la suppression du blog !";
 	}				
-}
-else{
+} else {
 	$messageServeur ="";
 }

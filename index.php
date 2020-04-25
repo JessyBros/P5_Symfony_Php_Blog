@@ -1,67 +1,50 @@
 <?php
 session_start();
 
-
-require "controller/controller.php";
+use App\Controller\Controller;
+use Twig\Loader\FilesystemLoader;
 
 require_once "vendor/autoload.php";
 
 /* Je vais chercher les fichiers dans le dossier templates */
-$loader = new Twig_Loader_Filesystem(__DIR__ . "/templates");
+$loader = new FilesystemLoader(__DIR__ . "/templates");
+
+/* Appel l'environnement twig */
 $twig = new \Twig\Environment($loader,[
 	'cache' => false /*__DIR__ . '/tmp'*/]);
 
-	/* add session */
+/* add session */
 $twig->addGlobal('session', $_SESSION);
 
+$page = new Controller($twig);
+
 		switch ($_GET['action']) {
-		
 			case 'accueil':
-		
-				$page = new Controller;
-				$page -> accueil($twig);
+				$page -> accueil();
 				break;
-		
-				case 'blogs':
-				$page = new Controller;
-				$page ->blogs($twig);
+			case 'blogs':
+				$page ->blogs();
 				break;
-		
-				case 'blog':
-				$page = new Controller;
-				$page ->blog($twig);
+			case 'blog':
+				$page ->blog();
 				break;
-		
-				case 'connexion':
-				$page = new Controller;
-				$page ->connexion($twig);
+			case 'connexion':
+				$page ->connexion();
 				break;
-		
-				case 'inscription':
-				$page = new Controller;
-				$page ->inscription($twig);
+			case 'inscription':
+				$page ->inscription();
 				break;
-		
-				case 'ajouter-un-blog';
-				$page = new Controller;
-				$page ->ajouterUnBlog($twig);
+			case 'ajouter-un-blog';
+				$page ->ajouterUnBlog();
 				break;
-
-				case 'modifier-blogs':
-				$page = new Controller;
-				$page ->modifierBlogs($twig);
+			case 'modifier-blogs':
+				$page ->modifierBlogs();
 				break;
-
-				case 'modifier-blog':
-				$page = new Controller;
-				$page ->modifierBlog($twig);
+			case 'modifier-blog':
+				$page ->modifierBlog();
 				break;
-		
-				default:
+			default:
 				header('HTTP/1.0 404 Not Found');
 				echo $twig->render('404.twig');
-				break;
-		
-		
-		
-			}
+				break;		
+		}

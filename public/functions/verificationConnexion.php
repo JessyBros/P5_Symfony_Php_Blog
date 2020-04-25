@@ -1,12 +1,10 @@
 <?php 
-if(isset($_SESSION["connecter"]) && isset($_SESSION["id"]))
-{
-    if( $_SESSION["connecter"] = false)
-    {
+if (isset($_SESSION["connecter"]) && isset($_SESSION["id"])) {
+    if($_SESSION["connecter"]){
+       /* nothing, you can visit the page */
+    } else {
         header("Location:http://localhost/p5_symfony_php_blog");
     }
-}
-else{
+} else {
     header("Location:http://localhost/p5_symfony_php_blog");
 }
-?>
