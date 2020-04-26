@@ -1,0 +1,27 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	
+
+    <h1>Liste des visiteurs inscrits</h1>
+    <p> {{ messageServeur }}</p>
+    {% for visiteur in listeVisiteursInscrits %}
+        <article> 
+            <p>Visiteurs : {{ visiteur.id }}</p>
+
+             <form action="" method="post">
+                <input type="hidden" name="id" value="{{ visiteur.id }}" >
+                <input type="hidden" name="nom" value="{{ visiteur.nom }}" >
+                <input type="hidden" name="prenom" value="{{ visiteur.prenom }}" >
+                <input type="hidden" name="email" value="{{ visiteur.email }}" >
+                <input type="hidden" name="motDePasse" value="{{ visiteur.motDePasse }}" >
+
+                <input type="submit" name="confirmer" value="Confirmer" id="confirmer_submit"><br>
+                <input type="submit" name="supprimer" value="Supprimer" id="supprimer_submit">
+            </form>
+            
+        </article> 
+    {% endfor %}
+
+{% endblock %}

@@ -28,7 +28,7 @@ class FunctionsSql extends Manager
         return $post;
     }
 
-    public function commentaire($idBlog)
+    public function listeDesCommentaire($idBlog)
     {
         $connexion = $this-> connexionBdd($idBlog);
         $req = $connexion->prepare('SELECT * FROM commentaire WHERE blog_id = ? && valider = true');
@@ -138,5 +138,34 @@ class FunctionsSql extends Manager
     }
 
 
+    public function listeVisiteursInscrits()
+    {
+        $connexion = $this-> connexionBdd();
+        $req = $connexion->query('SELECT * FROM visiteur');
+        return $req;
+    }
+
+    public function supprimerVisiteur($idVisiteur)
+    {
+        $connexion = $this-> connexionBdd($idVisiteur);
+        $req = $connexion->prepare('DELETE FROM visiteur WHERE id = ?');
+        $req->execute(array(
+            $idVisiteur
+        ));
+        return $req;
+    }
+
+    public function confirmerVisiteur($nom, $prenom, $email, $motDePasse)
+    {
+        $connexion = $this-> connexionBdd($nom, $prenom, $email, $motDePasse);
+        $req = $connexion->prepare( 'INSERT INTO administrateur SET nom = ?, prenom = ?, email = ?, motDePasse = ?');
+        $req->execute(array(
+            $nom,
+            $prenom,
+            $email,
+            $motDePasse
+        ));
+        return $req;
+    }
 
 }

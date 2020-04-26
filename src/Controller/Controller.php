@@ -37,7 +37,7 @@ class Controller
 
         $listeDesCommentaires = new FunctionsSql;
         
-        echo $this->twig->render('visiteur/blog.twig',["blog"=> $blog ->blog($idBlog), "listeDesCommentaires" =>$listeDesCommentaires->commentaire($idBlog),"messageServeur" => $messageServeur]);
+        echo $this->twig->render('visiteur/blog.twig',["blog"=> $blog ->blog($idBlog), "listeDesCommentaires" =>$listeDesCommentaires->listeDesCommentaire($idBlog),"messageServeur" => $messageServeur]);
     }
 
     public function connexion()
@@ -109,6 +109,17 @@ class Controller
 
         echo $this->twig ->render('admin/commentaires.twig',["listeDesCommentaires" => $listeDesCommentaires ->listeDesCommentaires(),"messageServeur" => $messageServeur]);
 
+    }
+
+    public function visiteurs()
+    {
+        $listeVisiteursInscrits = new FunctionsSql;
+        
+        $supprimerVisiteurManager = new FunctionsSql;
+        $confirmerVisiteurManager = new FunctionsSql;
+        require "public/functions/validerVisiteur.php";
+
+        echo $this->twig ->render('admin/visiteurs.twig',["listeVisiteursInscrits" => $listeVisiteursInscrits ->listeVisiteursInscrits(),"messageServeur" => $messageServeur]);
     }
 
 }

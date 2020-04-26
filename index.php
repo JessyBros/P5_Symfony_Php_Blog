@@ -46,6 +46,9 @@ $page = new Controller($twig);
 			case 'commentaires':
 				$page ->commentaires();
 				break;
+			case 'visiteurs':
+				$page ->visiteurs();
+				break;
 			default:
 				header('HTTP/1.0 404 Not Found');
 				echo $twig->render('404.twig');
