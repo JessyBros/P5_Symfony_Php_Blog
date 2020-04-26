@@ -44,6 +44,7 @@ CREATE TABLE commentaire
     auteur VARCHAR(150) NOT NULL,
     message TEXT NOT NULL,
     date DATETIME NOT NULL,
+    valider BOOLEAN NOT NULL,
     blog_id INT,
     FOREIGN KEY (blog_id) REFERENCES blog(id)
 );
@@ -94,7 +95,7 @@ SET  titre="Les Films de Plein Air", auteur="Jessy BROS", chapo="Un fête ! Où 
  
 
 INSERT INTO commentaire
-VALUES (NULL, "Rayan Shiper", "Salut ! Super blog, continue comme ça ;)", "2020-04-13 12h05:59", (SELECT id FROM blog WHERE id="1") ),
-	   (NULL, "Alexandre", "Bravo à toi ! Je devrais me lancer...", "2020-04-13 12h05:01", (SELECT id FROM blog WHERE id="1") ),
-	   (NULL, "Pierre DUBASK", "Le designer à fait du bon travail ! Le développeur se débrouille", "2020-04-29 18h34:22", (SELECT id FROM blog WHERE id="7") ),
-	   (NULL, "Alexis", "Cet été sera de la folie ! ", "2020-05-02 17h02:42", (SELECT id FROM blog WHERE id="8") );
+VALUES (NULL, "Rayan Shiper", "Salut ! Super blog, continue comme ça ;)", "2020-04-13 12h05:59", false, (SELECT id FROM blog WHERE id="1") ),
+	   (NULL, "Alexandre", "Bravo à toi ! Je devrais me lancer...", "2020-04-13 12h05:01", false, (SELECT id FROM blog WHERE id="1") ),
+	   (NULL, "Pierre DUBASK", "Le designer à fait du bon travail ! Le développeur se débrouille", "2020-04-29 18h34:22", false, (SELECT id FROM blog WHERE id="7") ),
+	   (NULL, "Alexis", "Cet été sera de la folie ! ", "2020-05-02 17h02:42", false, (SELECT id FROM blog WHERE id="8") );

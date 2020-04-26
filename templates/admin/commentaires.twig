@@ -1,0 +1,25 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	
+
+<h1>Liste des commentaires non validés</h1>
+<p> {{ messageServeur }}</p>
+{% for commentaire in listeDesCommentaires %}
+			<article> 
+            <p>commentaire : {{ commentaire.id }}</p>
+
+            <form action="" method="post">
+                <input type="hidden" name="idCommentaire" value="{{ commentaire.id }}" >
+                <input type="submit" name="valider" value="Valider" id="valider_submit"><br>
+                <input type="submit" name="supprimer" value="Supprimer" id="supprimer_submit">
+            </form>
+            
+
+            </article> 
+    {% endfor %}
+    
+
+
+{% endblock %}

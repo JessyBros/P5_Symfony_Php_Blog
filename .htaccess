@@ -32,3 +32,4 @@ RewriteRule ^blog-([0-9]+)$ index.php?action=blog&numero=$1
 RewriteRule ^ajouter-un-blog$ index.php?action=ajouter-un-blog
 RewriteRule ^modifier-blogs$ index.php?action=modifier-blogs
 RewriteRule ^modifier-blog-([0-9]+)$ index.php?action=modifier-blog&numero=$1
+RewriteRule ^commentaires$ index.php?action=commentaires

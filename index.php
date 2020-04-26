@@ -43,6 +43,9 @@ $page = new Controller($twig);
 			case 'modifier-blog':
 				$page ->modifierBlog();
 				break;
+			case 'commentaires':
+				$page ->commentaires();
+				break;
 			default:
 				header('HTTP/1.0 404 Not Found');
 				echo $twig->render('404.twig');

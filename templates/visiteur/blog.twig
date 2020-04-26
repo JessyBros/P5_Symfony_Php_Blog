@@ -5,6 +5,7 @@
 
 <h1>Mon Blog </h1>
 
+<section>
 
 <p> {{ blog.id }}</p>
 <p> {{ blog.titre }}</p>
@@ -13,6 +14,29 @@
 <p> {{ blog.date }}</p>
 <img src="public/images/blogs/{{ blog.image }}" />
 <p> {{ blog.dateMiseAJour }}</p>
+</section>
+
+<section>
+<h2>Ajouter un commentaire à ce blog</h2>
+    <form action="" method="post">
+
+        <label for="auteur">Auteur</label>
+        <input type="text" name="auteur" placeholder="Votre nom d'auteur" id="auteur"><br>
+
+        <label for="message">Message</label>
+        <textarea id="message"name="message" rows="4" cols="50" placeholder="Votre message..."></textarea><br>
+
+        <input type="submit" name="submit" id="submit" value"Envoyer"><br>
+        {{ messageServeur }}
+    </form>
+</section>
+
+<section>
+<h2> Liste des commentaires</h2>
+{% for commentaire in listeDesCommentaires %}
+		<article> Blog : {{ commentaire.id }}</article>
+    {% endfor %}
+</section>
 
 
 {% endblock %}

@@ -28,6 +28,26 @@ class FunctionsSql extends Manager
         return $post;
     }
 
+    public function commentaire($idBlog)
+    {
+        $connexion = $this-> connexionBdd($idBlog);
+        $req = $connexion->prepare('SELECT * FROM commentaire WHERE blog_id = ? && valider = true');
+        $req->execute(array($idBlog));
+        return $req;
+    }
+
+    public function ajouterCommentaire($auteur, $message, $idBlog)
+    {
+        $connexion = $this-> connexionBdd($auteur, $message, $idBlog);
+        $req = $connexion->prepare('INSERT INTO commentaire SET auteur = ?, message = ?, date = Now(), valider = false, blog_id = ? ');
+        $req->execute(array(
+            $auteur,
+            $message,
+            $idBlog 
+        ));
+        return $req;
+    }
+
 
     public function inscription($nom, $prenom, $email, $mdp)
     {
@@ -89,5 +109,34 @@ class FunctionsSql extends Manager
         ));
         return $req;
     }
+
+    public function listeDesCommentaires()
+    {
+        $connexion = $this-> connexionBdd();
+        $req = $connexion->query('SELECT * FROM commentaire WHERE valider = false  ORDER BY id ASC ');
+        return $req;
+    }
+
+    public function validerCommentaire($idCommentaire)
+    {
+        $connexion = $this-> connexionBdd($idCommentaire);
+        $req = $connexion->prepare('UPDATE commentaire SET valider = true WHERE id = ?');
+        $req->execute(array(
+            $idCommentaire
+        ));
+        return $req;
+    }
+
+    public function supprimerCommentaire($idCommentaire)
+    {
+        $connexion = $this-> connexionBdd($idCommentaire);
+        $req = $connexion->prepare('DELETE FROM commentaire WHERE id = ?');
+        $req->execute(array(
+            $idCommentaire
+        ));
+        return $req;
+    }
+
+
 
 }
