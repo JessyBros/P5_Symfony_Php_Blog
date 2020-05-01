@@ -1,5 +1,9 @@
 {% extends "base.twig" %}
 
+{% block head %} 
+        <title>Connexion administrateur</title>
+{% endblock %}
+
 {% block content %}
 
 <h1>connexion</h1>
@@ -7,14 +11,18 @@
 <form action="" method="post">
 
 	<label for="email">Votre Email</label>
-	<input type="email" name="email" placeholder="adresse@hotmail.com" id="email"><br>
+	<input type="email" name="email" placeholder="adresse@hotmail.com" id="email" required><br>
 
 	<label for="mdp">Mot de Passe</label>
 	<input type="password" name="mdp" id="mdp"><br>
 
-	<input type="submit" name="submit" value="connexion" id="submit"><br>
+	<input type="submit" name="submit" value="connexion" id="submit" required><br>
+	
+	<a href=""><span>Mot de passe oublié ?</span></a>
 
-	<p> <?= $messageServeur; ?></p>
+	{{ messageServeur|raw }}
+		
+
 </form>
 
 

@@ -1,56 +1,96 @@
 {% extends "base.twig" %}
 
+{% block head %} 
+        <title>Jessy BROS | Blog développeur web</title>
+		 <link rel="stylesheet" href="public/css/accueil.css">
+{% endblock %}
+
 {% block content %}
 	
 <section id="presentation">
 
-	<h1>Développeur web</h1>
-	<p>Un développeurs qui transcende les limites !</p>
-
-	<div>
-		<img src="" alt="Photo de jessy | Blog développeur web">
-		<p><strong>Jessy BROS - </strong>Développeur web Développeurweb Back-end </p>
-	</div>
-
-	<div>
-		<p><strong>Études : </strong>Formation chez Openclassrooms: Développeur d'application - PHP / Symfony</p>
-		<img src="" alt="logo openclassrooms">
-	</div>
-
+	<h1>DÉVELOPPEUR WEB</h1>
+	
+	<p id="phraseAccroche">Un développeurs qui transcende les limites !</p>
+	
+	<div id="blogPresentation">
+		
+		<div class="text">
+			<div>
+				<h2>Blog de Jessy BROS</h2>
+				<img id="photoJessy" src="public/images/jessy_Bros.jpg" alt="Photo de jessy | Blog développeur web">
+				<p>Bienvenue sur mon petit blog ! :D<br>
+				Je suis un jeune un developpeur web spécialisé en back-end.<br>
+				A travers ce site, vous allez pouvoir suivre toutes mes aventures ! <br>
+				 Mes projets réalisés hébergés dans les quatre coins du monde entier !</p>
+			</div>
+			<div>
+				<h3>Formation chez Openclassrooms</h3>
+				<div id="openclassrooms">
+					<img id="photoOpenclassrooms" src="public/images/openclassrooms.png" alt="logo openclassrooms">
+					<p><em>Développeur d'application - PHP / Symfony</em></p>
+				<div>
+			</div>
+		</div>
+	</div>				
 </section>
 
-<section id="blogs">
+<section id="conteneurBlogs">
 
 	<h2>Les derniers blogs</h2>
 
+	<div id="blogs">
 	 {% for blog in lesDerniersBlogs %}
-        <article> Blog : {{ blog.id }} </article>
+        <a href= "blog-{{ blog.id }}">
+			<article>
+				<p><strong>{{ blog.titre}} </strong></p>
+				<img class="blogImage" src="public/images/blogs/{{ blog.image}}" alt="{{blog.titre}}"/>
+			</article>
+		</a>
     {% endfor %}
-
-	     
-
-	<a href="blogs"><button>Voir tous les blogs existants</button></a>
+	</div>
 
 </section>
 
-<section id="contact_form">
-<h2>Contactez-moi</h2>
-<form action="mailto:j.bros@hotmail.fr" method="post">
-
-	<label for="nom">Nom/Prénom</label>
-	<input type="text" name="nom" placeholder="Votre Nom" id="nom"><br>
-
-	<label for="email">Email</label>
-	<input type="email" name="email" placeholder="adresse@domaine.com" id="email"><br>
-
-	<label for="message">Message</label>
-
-<textarea id="message" rows="4" cols="50" placeholder="Votre message..."></textarea><br>
-
-	<input type="submit" name="submit" id="submit" value"Envoyer"><br>
-
-</form>
-
+<section id="curriculumVitae">
+	<h2>curriculum Vitae</h2>
+	<p> Vous désirez en savoir plus sur moi ? N'hésitez pas à visiter mon curriculumVitae et mes réseaux sociaux ! :D</p>
+	<button><a href="public/images/cv/Bros-Jessy.pdf" target="_blank">Accéder au curriculumVitae</a></button>
+	<ul>
+   		<li>
+        	<a href="https://github.com/SiProdZz" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+        </li>
+        <li>
+			<a href="https://www.facebook.com/jessy.bros.1" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+    </ul>
 </section>
+
+<section id="contactForm">
+	<h2>Contactez-moi</h2>
+
+	<form action="" method="post">
+
+		<label for="nom">Nom/Prénom</label>
+		<input type="text" name="nom" placeholder="Votre Nom" id="nom"><br>
+
+		<label for="email">Email</label>
+		<input type="email" name="email" placeholder="adresse@domaine.com" id="email"><br>
+
+		<label for="message">Message</label>
+		<textarea name="message" rows="4" cols="50" placeholder="Votre message..."></textarea><br>
+
+		<input type="submit" name="submit" id="submit" value"Envoyer"><br>
+		
+		{{ messageServeur |raw }}
+
+	</form>
+</section>
+
+
 
 	{% endblock %}

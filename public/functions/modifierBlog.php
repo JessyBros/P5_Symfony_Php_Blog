@@ -5,12 +5,12 @@ if (isset($_POST["modifierSubmit"])) {
     $chapo  = isset($_POST['chapo']) ? $_POST['chapo'] : NULL;
     $contenu  = isset($_POST['contenu']) ? $_POST['contenu'] : NULL;
 	
-	$modifierBlog = $modifierBlogManager -> modifierBlog($titre, $chapo, $contenu);
+	$modifierBlog = $modifierBlogManager -> modifierBlog($titre, $chapo, $contenu, $idBlog);
 
 	if ($modifierBlog) {
-		$messageServeur ="Le blog a été modifié avec succès !";
+		$messageServeur ='<p id="messageServeurTrue">Le blog a été modifié avec succès ! </p>';
 	} else {
-		$messageServeur = "Erreur lors de la modification du blog !";
+		$messageServeur = '<p id="messageServeur">Erreur lors de la modification du blog !</p>';
 	}				
 } else {
 	$messageServeur ="";

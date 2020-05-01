@@ -17,6 +17,9 @@ class Controller
     public function accueil()
     {
         $lesDerniersBlogs = new FunctionsSql;
+
+        require "public/functions/contactMail.php";
+
         echo $this->twig->render('visiteur/accueil.twig',["lesDerniersBlogs" => $lesDerniersBlogs-> lesDerniersBlogs()]);
     }
 
@@ -31,13 +34,14 @@ class Controller
         $idBlog  = isset($_GET['numero']) ? $_GET['numero'] : NULL;
 
         $blog = new FunctionsSql;
+        $numeroDernierBlog = new functionsSql;
 
         $ajouterCommentaireManager = new FunctionsSql;
         require "public/functions/ajouterCommentaire.php";
 
-        $listeDesCommentaires = new FunctionsSql;
+        $commentairesBlog = new FunctionsSql;
         
-        echo $this->twig->render('visiteur/blog.twig',["blog"=> $blog ->blog($idBlog), "listeDesCommentaires" =>$listeDesCommentaires->listeDesCommentaire($idBlog),"messageServeur" => $messageServeur]);
+        echo $this->twig->render('visiteur/blog.twig',["blog"=> $blog ->blog($idBlog),"numeroDernierBlog"=> $numeroDernierBlog ->numeroDernierBlog(), "commentairesBlog" =>$commentairesBlog->commentairesBlog($idBlog),"messageServeur" => $messageServeur]);
     }
 
     public function connexion()
@@ -47,7 +51,7 @@ class Controller
 	    $connexion = $connexionManager-> connexionAdministrateur($email);
         require "public/functions/connexion.php";
 
-        echo $this->twig->render('visiteur/connexion.twig');
+        echo $this->twig->render('visiteur/connexion.twig',["messageServeur" => $messageServeur]);
     }
 
     public function inscription()
@@ -55,7 +59,7 @@ class Controller
         $inscriptionManager = new FunctionsSql();
         require "public/functions/inscription.php";
 
-        echo $this->twig->render('visiteur/inscription.twig');
+        echo $this->twig->render('visiteur/inscription.twig',["messageServeur" => $messageServeur]);
     }
 
 
@@ -93,7 +97,7 @@ class Controller
         $supprimerBlogManager = new FunctionsSql;
         require "public/functions/supprimerBlog.php";
         
-        echo $this->twig->render('admin/modifierBlog.twig',["blog"=> $blog ->blog($idBlog),"messageServeur" => $messageServeur ]);
+        echo $this->twig->render('admin/modifierBlog.twig',["blog"=> $blog ->blog($idBlog),"messageServeur" => $messageServeur]);
     }
 
     public function commentaires()

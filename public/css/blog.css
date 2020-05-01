@@ -1,0 +1,84 @@
+#conteneurBlog{
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+#conteneurBlog article{
+    font-size: 110%;
+    font-style: italic;
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+
+#conteneurBlog #chapo{
+    font-size: 110%;
+    font-style: italic;
+}
+
+#conteneurBlog #image{
+    height: 250px;
+}
+
+#conteneurBlog #contenu{
+    padding: 25px 15px 40px 15px;
+    
+}
+
+
+#conteneurBlog #auteur{
+    text-align: right;
+    font-style: italic;
+    font-size: 90%;
+} 
+
+
+#navigationBlogs{
+    display: flex;
+    justify-content: space-around;
+}
+
+#navigationBlogs div:hover *{
+    color: #41a4d1;
+}
+
+#ConteneurFormAjoutCommentaire{
+
+    padding: 20px;
+}
+
+#conteneurCommentaires{
+    max-width: 500px;
+    margin: auto;
+    padding: 25px;
+}
+
+#conteneurCommentaires h2{
+    color: #ffffffb3;
+    text-shadow: 1px 1px #15191c;
+}
+
+#conteneurCommentaires article{
+    margin: 35px;
+    background-color: #15191c;
+    border: 1px solid #ffffffb3;
+    padding: 10px 10px 5px 10px;
+    text-align: center;
+}
+
+#auteurCommentaire{
+    color: #41a4d1;
+    font-size: 115%;
+}
+#conteneurCommentaires article p{
+    
+    margin: 10px;
+    
+}
+
+#dateCommentaire{
+    font-size: 80%;
+    text-align: right;
+    display: block;
+    margin: 15px 5px 5px 5px;
+}

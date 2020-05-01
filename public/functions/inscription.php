@@ -11,12 +11,12 @@ if (isset($_POST["submit"])) {
 		$inscription = $inscriptionManager-> inscription($nom, $prenom, $email, $mdp);
 
 		if ($inscription) {
-			$messageServeur ="Votre inscription a �t� enregistr� avec succ�s !";
+			$messageServeur ='<p id="messageServeurTrue">Votre inscription a été enregistré avec succès !</p>';
 		} else {
-			$messageServeur = "Erreur, l'inscription n'a pas pu �tre valid� !";
+			$messageServeur = '<p id="messageServeur">Erreur, l\'inscription n\'a pas pu être validé !</p>';
 		}
 	} else {
-		$messageServeur = "Les mots de passe ne sont pas identique.";
+		$messageServeur = '<p id="messageServeur">Les mots de passe ne sont pas identique.</p>';
 	}
 } else {
 	$messageServeur ="";

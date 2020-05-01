@@ -10,18 +10,18 @@ if (isset($_POST["confirmer"])) {
 	$confirmerVisiteur = $confirmerVisiteurManager -> confirmerVisiteur($nom, $prenom, $email, $motDePasse);
 	$supprimerVisiteur = $supprimerVisiteurManager -> supprimerVisiteur($idVisiteur);
 	if ($confirmerVisiteur && $supprimerVisiteur) {
-		$messageServeur ="Le visiteur a bien été enregistré en tant qu'administrateur !";
+		$messageServeur ='<p id="messageServeurTrue">Le visiteur a bien été enregistré en tant qu\'administrateur !</p>';
 	} else {
-		$messageServeur = "Erreur lors de la confirmation du visiteur !";
+		$messageServeur = '<p id="messageServeur">Erreur lors de la confirmation du visiteur !</p>';
 	}
 } elseif (isset($_POST["supprimer"])) {
 	$idVisiteur  = isset($_POST['id']) ? $_POST['id'] : NULL;
 	$supprimerVisiteur = $supprimerVisiteurManager -> supprimerVisiteur($idVisiteur);
 	if ($supprimerVisiteur) {
-		$messageServeur ="Le visiteur a bien été supprimé !";
+		$messageServeur = '<p id="messageServeurTrue">Le visiteur a bien été supprimé !</p>';
 	} else {
-		$messageServeur = "Erreur lors de la suppresion du visiteur !";
+		$messageServeur = '<p id="messageServeur">Erreur lors de la suppresion du visiteur !</p>';
 	}
 } else {
-	$messageServeur ="";
-}
+	$messageServeur = "";
+}	

@@ -1,65 +1,64 @@
 ﻿<!DOCTYPE html>
 <html>
     <head>
-      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <title>Jessy BROS | Blog d�veloppeur web</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <META NAME="Language" CONTENT="fr">
+        <link rel="stylesheet" href="public/css/base.css">
+        {% block head %} {% endblock %}
         <link rel="icon" type="image/png" href="public/images/logo.png" />
-        <META NAME="Description" CONTENT=" Bienvenue sur le blog de Jessy BROS, � l'occasion d'un projet de cours.">
+        <script src="https://kit.fontawesome.com/43219f80e6.js" crossorigin="anonymous"></script>
+        <META NAME="Description" CONTENT=" Bienvenue sur le blog de Jessy BROS, à l'occasion d'un projet de cours.">
     </head>
 
     <body>
-        <header>
-        
-{{  session.auteur }}
-	        <img style="height:100px;" src="public/images/logo.png" alt="logo | Blog d�veloppeur web"/>
+        <header>         
 	        <nav>
 		        <a href="http://localhost/p5_symfony_php_blog/">Accueil</a>
 		        <a href="blogs">Blogs</a>
-
+            </nav>     
+            <img class="logo" src="public/images/logo.png" alt="logo | Blog d�veloppeur web"/>  
+            <nav>
                 {% if session.connecter  %}
+                    <span id="admin">{{  session.admin }}</span>
                     <a href="public/functions/deconnexion.php">deconnexion</a>
                 {% else %}
-                    <a href="connexion">connexion</a>
                     <a href="inscription">inscription</a>
+                    |
+                    <a href="connexion">connexion</a>
                 {% endif  %}
 	        </nav>
-
         </header>
 
-        {% block content %} {% endblock %}
+        <section>
+            {% block content %} {% endblock %}
+        </section>
 
         <footer>
-
-            <div>
-               
-               <img style="height:100px;" src="public/images/logo.png" alt="logo | Blog d�veloppeur web"/>
+         {% if session.connecter  %}          
+                <nav id="menuFooter">
+                    <a href="ajouter-un-blog">Ajouter un blog</a> 
+                    <a href="modifier-blogs">Blogs</a>
+                    <a href="commentaires">Commentaires</a> 
+                    <a href="visiteurs">Visiteurs</a> 
+                </nav>
+            {% endif %}
+            <div id="footer">
+                <div>Mention Légale</div>
+                <div>COPYRIGHT {{ "now"|date("Y") }} - Jessy BROS</div>               
                 <ul>
-
                     <li>
-                        <a href="https://www.facebook.com/jessy.bros.1">
-                            <i>facebook</i>
+                        <a href="https://www.facebook.com/jessy.bros.1" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
                         </a>
                     </li>
 
                     <li>
-                        <a href="https://github.com/SiProdZz">
-                            <i>GitHub</i>
+                        <a href="https://github.com/SiProdZz" target="_blank">
+                           <i class="fab fa-github"></i>
                         </a>
                     </li>
                 </ul>
-
-             {% if session.connecter  %}
-                <nav>
-                    <a href="ajouter-un-blog">Ajouter un blog</a>
-                    <a href="modifier-blogs">Blogs</a>
-                    <a href="commentaires"> Commentaires</a>
-                    <a href="visiteurs"> Visiteurs</a>
-                <nav>
-            {% endif %}
-
-                <p>COPYRIGHT {{ "now"|date("Y") }} - Jessy BROS</p>
-            <div>
+            </div>
         </footer>
-
     </body>
 </html>

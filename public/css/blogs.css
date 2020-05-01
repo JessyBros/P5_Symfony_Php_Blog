@@ -1,0 +1,37 @@
+#litesDesBlogs{
+    max-width: 650px;
+    margin: auto; 
+}
+
+#litesDesBlogs article{
+    text-align: center;  
+    background-color: #15191c;
+    border: 1px solid #ffffffb3;
+    border-radius: 5px;
+    margin:10px;
+    padding: 5px;
+    
+}
+#litesDesBlogs article *{
+    color:#ffffffb3;
+}
+
+#litesDesBlogs  #titre{
+    margin: 3px;
+    font-size: 110%;
+}
+#litesDesBlogs  #chapo{
+    margin:10px;
+}
+
+#litesDesBlogs  #date{
+    display: block;
+    font-size: 90%;
+    text-align: right;
+    font-style: italic;
+}
+
+#litesDesBlogs a:hover strong{
+    color: #41a4d1;
+    
+}

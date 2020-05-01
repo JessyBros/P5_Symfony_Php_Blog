@@ -1,5 +1,10 @@
 {% extends "base.twig" %}
 
+{% block head %} 
+    <title>Admin modification du blog {{ blog.id }}</title>
+		<link rel="stylesheet" href="public/css/modifierBlog.css">
+{% endblock %}
+
 {% block content %}
 
 
@@ -15,13 +20,13 @@
 	<input type="text" name="chapo" value="{{ blog.chapo }}" id="chapo"><br>
 
   <label for="contenu">Contenu</label>
-  <textarea name="contenu" id="contenu" rows="4" cols="50">{{ blog.contenu }}</textarea>	
+  <textarea name="contenu" id="contenu" rows="6" cols="50">{{ blog.contenu }}</textarea>	
 
-	<input type="submit" name="modifierSubmit" value="modifier" id="submit"><br>
-	<input type="submit" name="supprimerSubmit" value="supprimer" id="submit"><br>
-
-
-	<p> {{ messageServeur }}</p>
+<div id="conteneurSubmit">
+	<input type="submit" name="modifierSubmit" value="modifier" id="submit">
+	<input type="submit" name="supprimerSubmit" value="supprimer" id="submit">
+</div>
+	{{ messageServeur |raw }}
 </form>
 
 

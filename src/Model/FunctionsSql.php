@@ -28,10 +28,10 @@ class FunctionsSql extends Manager
         return $post;
     }
 
-    public function listeDesCommentaire($idBlog)
+    public function commentairesBlog($idBlog)
     {
         $connexion = $this-> connexionBdd($idBlog);
-        $req = $connexion->prepare('SELECT * FROM commentaire WHERE blog_id = ? && valider = true');
+        $req = $connexion->prepare('SELECT * FROM commentaire WHERE blog_id = ? ORDER BY date DESC');
         $req->execute(array($idBlog));
         return $req;
     }
@@ -88,14 +88,15 @@ class FunctionsSql extends Manager
         return $req;
     }
 
-    public function modifierBlog($titre, $chapo, $contenu)
+    public function modifierBlog($titre, $chapo, $contenu,$idBlog)
     {
-        $connexion = $this-> connexionBdd($titre, $chapo, $contenu);
-        $req = $connexion->prepare('UPDATE blog SET titre = ?, chapo = ?, contenu = ?, dateMiseAJour = Now()');
+        $connexion = $this-> connexionBdd($titre, $chapo, $contenu, $idBlog);
+        $req = $connexion->prepare('UPDATE blog SET titre = ?, chapo = ?, contenu = ?, dateMiseAJour = Now() WHERE id= ?');
         $req->execute(array(
             $titre,
             $chapo,
-            $contenu
+            $contenu,
+            $idBlog
         ));
         return $req;
     }
@@ -166,6 +167,16 @@ class FunctionsSql extends Manager
             $motDePasse
         ));
         return $req;
+    }
+
+    public function numeroDernierBlog()
+    {
+        $connexion = $this-> connexionBdd();
+        $req = $connexion->query('SELECT id FROM blog ORDER BY id DESC Limit 1');
+        $req->execute(array());
+        $retour = $req->fetch();
+        return $retour;
+
     }
 
 }

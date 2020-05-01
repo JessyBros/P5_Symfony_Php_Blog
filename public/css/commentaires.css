@@ -1,0 +1,26 @@
+#conteneurCommentaire{
+    text-align: center;
+    border: 1px solid #41a4d1 ;
+    background-color:#15191c;
+    border-radius: 5px;
+    max-width: 500px;
+    margin: 10px auto 10px auto;
+    padding: 2px;
+}
+#conteneurSubmit{
+
+    text-align: center;
+}
+input[type="submit"]{
+    display: inline;
+    text-align: center;
+    width: auto;
+    margin: 10px;
+    padding: 10px 20px 10px 20px;
+}
+
+#commentaireMessage, span{
+    color: #41a4d1;
+    font-weight: bold;
+
+}

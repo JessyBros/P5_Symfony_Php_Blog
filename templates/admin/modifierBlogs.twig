@@ -1,14 +1,24 @@
 {% extends "base.twig" %}
 
+{% block head %} 
+    <title>Admin Liste blogs</title>
+		<link rel="stylesheet" href="public/css/modifierBlogs.css">
+{% endblock %}
+
 {% block content %}
 
 	
 
-<h1>Liste des blogs</h1>
-
-{% for blog in listeDesBlogs %}
-		<a href= "modifier-blog-{{ blog.id }}">	<article> Blog : {{ blog.id }}</article> </a>
+<h1>Choisissez un blog que vous souhaitez modifier</h1>
+<div id="litesDesBlogs">
+  {% for blog in listeDesBlogs %}
+		<a href= "modifier-blog-{{ blog.id }}">
+      <article>
+        <p id="titre"><strong>{{ blog.id }}. {{ blog.titre }} : </strong></p>
+     </article>
+    </a>
     {% endfor %}
+</div>
 
 
 {% endblock %}

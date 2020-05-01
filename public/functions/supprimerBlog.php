@@ -6,8 +6,6 @@ if (isset($_POST["supprimerSubmit"])) {
 		header("Location:modifier-blogs");
 		exit;
 	} else {
-		$messageServeur = "Erreur lors de la suppression du blog !";
+		$messageServeur = '<p id="messageServeur">Erreur lors de la suppression du blog !</p>';
 	}				
-} else {
-	$messageServeur ="";
 }

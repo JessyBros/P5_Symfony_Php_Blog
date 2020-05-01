@@ -1,22 +1,53 @@
 {% extends "base.twig" %}
 
+
+{% block head %} 
+        <title>{{blog.titre}} | Blog développeur web</title>
+		 <link rel="stylesheet" href="public/css/blog.css">
+{% endblock %}
+
 {% block content %}
 
+<section id="conteneurBlog">
+    <h1>{{ blog.titre }}</h1>
+    <p id="chapo"> {{ blog.chapo }}</p>
+    <article>
+        
+        <img id="image" src="public/images/blogs/{{ blog.image }}" />
+        <p id="contenu"> {{ blog.contenu | raw }}</p>
+        <p id="auteur"> Blog n° {{ blog.id }} écrit par {{ blog.auteur }}, 
+        {% if  blog.dateMiseAJour %}
+            <span id="date">modifié le {{blog.dateMiseAJour |  date("d-m-Y")}}</span>
+        {% else %}
+            <span id="date">crée le {{ blog.date | date("d-m-Y") }}</span>
+        {% endif %}
+        </p>
+    </article>
+    <nav id="navigationBlogs">
 
-<h1>Mon Blog </h1>
+        {% if  blog.id > 1 %}
+        <a href= "blog-{{ blog.id -1 }}">
+        <div>
+            <i class="fas fa-arrow-left"></i>
+            <span> Blog précédent</span>
+        </div>
+        </a>
+        {% endif %}
 
-<section>
+        {% if blog.id < numeroDernierBlog.id  %}
+        <a href= "blog-{{ blog.id +1 }}">
+        <div>
+            <span>Blog Suivant </span>
+            <i class="fas fa-arrow-right"></i>
+        </div>
+        </a>
+        {% endif %}
 
-<p> {{ blog.id }}</p>
-<p> {{ blog.titre }}</p>
-<p> {{ blog.chapo }}</p>
-<p> {{ blog.contenu | raw }}</p>
-<p> {{ blog.date }}</p>
-<img src="public/images/blogs/{{ blog.image }}" />
-<p> {{ blog.dateMiseAJour }}</p>
+
+    </nav>
 </section>
 
-<section>
+<section id="ConteneurFormAjoutCommentaire">
 <h2>Ajouter un commentaire à ce blog</h2>
     <form action="" method="post">
 
@@ -27,14 +58,22 @@
         <textarea id="message"name="message" rows="4" cols="50" placeholder="Votre message..."></textarea><br>
 
         <input type="submit" name="submit" id="submit" value"Envoyer"><br>
-        {{ messageServeur }}
+
+        {{ messageServeur |raw }}
+        
     </form>
 </section>
 
-<section>
-<h2> Liste des commentaires</h2>
-{% for commentaire in listeDesCommentaires %}
-		<article> Blog : {{ commentaire.id }}</article>
+<section id="conteneurCommentaires">
+
+ <h2> Liste des commentaires</h2>
+    {% for commentaire in commentairesBlog %}
+		<article> 
+            <p><span id="auteurCommentaire">{{ commentaire.auteur }} : </span> {{ commentaire.message }}</p>
+            <span id="dateCommentaire">{{ commentaire.date |date("d/m/Y H:m") }}</p>
+        </article>
+    {% else %}
+        <p id="boucleNul">Soyez le premier à mettre un commentaire !</p>
     {% endfor %}
 </section>
 

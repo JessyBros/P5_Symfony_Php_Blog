@@ -7,11 +7,10 @@ if (isset($_POST["submit"])) {
 	$ajouterCommentaire = $ajouterCommentaireManager -> ajouterCommentaire($auteur, $message, $idBlog);
 	
 	if ($ajouterCommentaire) {
-		$messageServeur ="Le commentaire a bien été enregistré avec succès en attente de confirmation !";
+		$messageServeur = '<p id="messageServeurTrue">Le commentaire a bien été enregistré avec succès en attente de confirmation ! </p>';
 	} else {
-		$messageServeur = "Erreur lors de l'ajout du commentaire !";
+		$messageServeur = '<p id="messageServeur">Erreur lors de l\'ajout du commentaire ! </p>';
 	}		
 } else {
-	$messageServeur ="";
-}
-
+	$messageServeur = "";
+}	

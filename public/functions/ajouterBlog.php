@@ -2,7 +2,7 @@
 
 if (isset($_POST["submit"])) {
     $titre  = isset($_POST['titre']) ? $_POST['titre'] : NULL;
-    $auteur  = isset($_SESSION['auteur']) ? $_SESSION['auteur'] : NULL;
+    $auteur  = isset($_SESSION['admin']) ? $_SESSION['admin'] : NULL;
     $chapo  = isset($_POST['chapo']) ? $_POST['chapo'] : NULL;
     $contenu  = isset($_POST['contenu']) ? $_POST['contenu'] : NULL;
 	$image  = isset($_FILES['image']['name']) ? $_FILES['image']['name'] : NULL;
@@ -30,23 +30,24 @@ if (isset($_POST["submit"])) {
 					$ajouterBlog = $ajouterBlogManager -> ajouterBlog($titre, $auteur, $chapo, $contenu, $image);
 
 						if ($ajouterBlog) {
-							$messageServeur ="Le blog a bien été enregistré avec succès !";
+							$messageServeur ='<p id="messageServeurTrue">Le blog a bien été enregistré avec succès !</p>';
 						} else {
-							$messageServeur = "Erreur lors de l'ajout du blog !";
+							$messageServeur = '<p id="messageServeur">Erreur lors de l\'ajout du blog !</p>';
 						}
 				} else {
-					$messageServeur = "Taille de l'image ne doit pas dépassé 2MB.";
+					$messageServeur = '<p id="messageServeur">Taille de l\'image ne doit pas dépassé 2MB.</p>';
 				}
 			} else {
-				$messageServeur = "L'image doit être au format jpeg, jpg ou png. ";
+				$messageServeur = '<p id="messageServeur">L\'image doit être au format jpeg, jpg ou png.</p>';
 			}
 		} else {
-			$messageServeur = "L'image ne peut pas être un fichier htaccess !";
+			$messageServeur = '<p id="messageServeur">L\'image ne peut pas être un fichier htaccess !</p>';
 		}
 	} else {
-		$messageServeur = "Erreur lors de l'ajout de l'image'!";
+		$messageServeur = '<p id="messageServeur">Erreur lors de l\'ajout de l\'image ! </p>';
 	}		
 } else {
-	$messageServeur ="";
-}
+	$messageServeur = "";
+}	
+
 

@@ -1,23 +1,33 @@
 {% extends "base.twig" %}
 
+{% block head %} 
+    <title>Admin commentaires {{ blog.id }}</title>
+		<link rel="stylesheet" href="public/css/commentaires.css">
+{% endblock %}
+
 {% block content %}
 
 	
 
 <h1>Liste des commentaires non validés</h1>
-<p> {{ messageServeur }}</p>
+
+{{ messageServeur |raw }}
+
 {% for commentaire in listeDesCommentaires %}
-			<article> 
-            <p>commentaire : {{ commentaire.id }}</p>
+			<div id="conteneurCommentaire"> 
+                <p>commentaire de <span>{{ commentaire.auteur }}</span> pour le blog n°<span>{{ commentaire.blog_id }}</span></p>
+                <p id="commentaireMessage">{{commentaire.message}}<p>
 
-            <form action="" method="post">
-                <input type="hidden" name="idCommentaire" value="{{ commentaire.id }}" >
-                <input type="submit" name="valider" value="Valider" id="valider_submit"><br>
-                <input type="submit" name="supprimer" value="Supprimer" id="supprimer_submit">
-            </form>
-            
-
-            </article> 
+                <form action="" method="post">
+                    <input type="hidden" name="idCommentaire" value="{{ commentaire.id }}" >
+                    <div id="conteneurSubmit">
+                        <input type="submit" name="valider" value="Valider" id="valider_submit">
+                        <input type="submit" name="supprimer" value="Supprimer" id="supprimer_submit">
+                    </div>
+                </form>
+            </div> 
+    {% else %}
+        <p id="boucleNul">Les utilisateurs n'ont laissés aucun nouveau commentaire.</p>
     {% endfor %}
     
 
