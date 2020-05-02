@@ -8,6 +8,7 @@ if (isset($_POST["submit"])) {
 	    $confirmMdp  = isset($_POST['confirmMdp']) ? $_POST['confirmMdp'] : NULL;
 		  	
 	if ($_POST["mdp"] == $_POST["confirmMdp"]) {
+		$mdp = password_hash($mdp, PASSWORD_DEFAULT);
 		$inscription = $inscriptionManager-> inscription($nom, $prenom, $email, $mdp);
 
 		if ($inscription) {

@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
-use App\Model\FunctionsSql;
+use App\Model\Blog;
+use App\Model\Commentaire;
+use App\Model\Utilisateur;
 
 class Controller
 {
@@ -16,7 +18,7 @@ class Controller
 
     public function accueil()
     {
-        $lesDerniersBlogs = new FunctionsSql;
+        $lesDerniersBlogs = new Blog;
 
         require "public/functions/contactMail.php";
 
@@ -25,7 +27,7 @@ class Controller
 
     public function blogs()
     {
-        $listeDesBlogs = new FunctionsSql();
+        $listeDesBlogs = new Blog();
         echo $this->twig->render('visiteur/blogs.twig',["listeDesBlogs" => $listeDesBlogs -> listeDesBlogs()]);
     }
 
@@ -33,20 +35,20 @@ class Controller
     { 
         $idBlog  = isset($_GET['numero']) ? $_GET['numero'] : NULL;
 
-        $blog = new FunctionsSql;
-        $numeroDernierBlog = new functionsSql;
+        $blog = new Blog;
+        $numeroDernierBlog = new Blog;
 
-        $ajouterCommentaireManager = new FunctionsSql;
+        $ajouterCommentaireManager = new Commentaire;
         require "public/functions/ajouterCommentaire.php";
 
-        $commentairesBlog = new FunctionsSql;
+        $commentairesBlog = new Commentaire;
         
         echo $this->twig->render('visiteur/blog.twig',["blog"=> $blog ->blog($idBlog),"numeroDernierBlog"=> $numeroDernierBlog ->numeroDernierBlog(), "commentairesBlog" =>$commentairesBlog->commentairesBlog($idBlog),"messageServeur" => $messageServeur]);
     }
 
     public function connexion()
     {
-        $connexionManager = new FunctionsSql;
+        $connexionManager = new Utilisateur;
         $email  = isset($_POST['email']) ? $_POST['email'] : NULL;
 	    $connexion = $connexionManager-> connexionAdministrateur($email);
         require "public/functions/connexion.php";
@@ -56,7 +58,7 @@ class Controller
 
     public function inscription()
     {
-        $inscriptionManager = new FunctionsSql();
+        $inscriptionManager = new Utilisateur();
         require "public/functions/inscription.php";
 
         echo $this->twig->render('visiteur/inscription.twig',["messageServeur" => $messageServeur]);
@@ -68,7 +70,7 @@ class Controller
     public function ajouterUnBlog()
     {
         require "public/functions/verificationConnexion.php";
-        $ajouterBlogManager = new FunctionsSql;
+        $ajouterBlogManager = new Blog;
         require "public/functions/ajouterBlog.php";
 
         echo $this->twig->render('admin/ajouterBlog.twig',["messageServeur" => $messageServeur]);
@@ -78,7 +80,7 @@ class Controller
     public function modifierBlogs()
     {
         require "public/functions/verificationConnexion.php";
-        $listeDesBlogs = new FunctionsSql();
+        $listeDesBlogs = new Blog();
 
         echo $this->twig->render('admin/modifierBlogs.twig',["listeDesBlogs" => $listeDesBlogs -> listeDesBlogs()]);
     }
@@ -88,14 +90,17 @@ class Controller
     public function modifierBlog()
     {
         require "public/functions/verificationConnexion.php";
-        $blog = new FunctionsSql;
+        $blog = new Blog;
         $idBlog  = isset($_GET['numero']) ? $_GET['numero'] : NULL;
 
-        $modifierBlogManager = new FunctionsSql;
+        $modifierBlogManager = new Blog;
         require "public/functions/modifierBlog.php";
 
-        $supprimerBlogManager = new FunctionsSql;
+        $supprimerBlogManager = new Blog;
+        $supprimerCommentairesDuBlogManager = new Commentaire;
         require "public/functions/supprimerBlog.php";
+
+       
         
         echo $this->twig->render('admin/modifierBlog.twig',["blog"=> $blog ->blog($idBlog),"messageServeur" => $messageServeur]);
     }
@@ -104,26 +109,26 @@ class Controller
     {
         require "public/functions/verificationConnexion.php";
 
-        $listeDesCommentaires = new FunctionsSql;
+        $listeDesCommentaires = new Commentaire;
 
         $idCommentaire = isset($_POST['idCommentaire']) ? $_POST['idCommentaire'] : NULL;
-        $validerCommentaireManager = new FunctionsSql;
-        $supprimerCommentaireManager = new FunctionsSql;
+        $validerCommentaireManager = new Commentaire;
+        $supprimerCommentaireManager = new Commentaire;
         require "public/functions/validerCommentaire.php";
 
         echo $this->twig ->render('admin/commentaires.twig',["listeDesCommentaires" => $listeDesCommentaires ->listeDesCommentaires(),"messageServeur" => $messageServeur]);
 
     }
 
-    public function visiteurs()
+    public function utilisateurs()
     {
-        $listeVisiteursInscrits = new FunctionsSql;
+        $listeUtilisateursInscrits = new Utilisateur;
         
-        $supprimerVisiteurManager = new FunctionsSql;
-        $confirmerVisiteurManager = new FunctionsSql;
-        require "public/functions/validerVisiteur.php";
+        $supprimerUtilisateurManager = new Utilisateur;
+        $confirmerUtilisateurManager = new Utilisateur;
+        require "public/functions/validerUtilisateur.php";
 
-        echo $this->twig ->render('admin/visiteurs.twig',["listeVisiteursInscrits" => $listeVisiteursInscrits ->listeVisiteursInscrits(),"messageServeur" => $messageServeur]);
+        echo $this->twig ->render('admin/utilisateurs.twig',["listeUtilisateursInscrits" => $listeUtilisateursInscrits ->listeUtilisateursInscrits(),"messageServeur" => $messageServeur]);
     }
 
 }

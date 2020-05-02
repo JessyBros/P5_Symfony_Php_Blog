@@ -2,7 +2,7 @@
 
 {% block head %} 
     <title>Admin utilisateurs</title>
-		<link rel="stylesheet" href="public/css/visiteurs.css">
+		<link rel="stylesheet" href="public/css/utilisateurs.css">
 {% endblock %}
 
 {% block content %}
@@ -13,17 +13,13 @@
     
     {{ messageServeur |raw }}
 
-    {% for visiteur in listeVisiteursInscrits %}
+    {% for utilisateur in listeUtilisateursInscrits %}
         <div id="conteneurCommentaire">  
-            <p>{{ visiteur.nom |upper }} {{ visiteur.prenom |capitalize}}</p>
-            <p>{{ visiteur.email }}</p>
+            <p>{{ utilisateur.nom |upper }} {{ utilisateur.prenom |capitalize}}</p>
+            <p>{{ utilisateur.email }}</p>
 
              <form action="" method="post">
-                <input type="hidden" name="id" value="{{ visiteur.id }}" >
-                <input type="hidden" name="nom" value="{{ visiteur.nom |upper }}" >
-                <input type="hidden" name="prenom" value="{{ visiteur.prenom |capitalize }}" >
-                <input type="hidden" name="email" value="{{ visiteur.email }}" >
-                <input type="hidden" name="motDePasse" value="{{ visiteur.motDePasse }}" >
+                <input type="hidden" name="id" value="{{ utilisateur.id }}" >
                 <div id="conteneurSubmit">
                     <input type="submit" name="confirmer" value="Confirmer" id="confirmer_submit">
                     <input type="submit" name="supprimer" value="Supprimer" id="supprimer_submit">

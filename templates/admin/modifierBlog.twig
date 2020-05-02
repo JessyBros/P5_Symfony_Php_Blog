@@ -22,9 +22,11 @@
   <label for="contenu">Contenu</label>
   <textarea name="contenu" id="contenu" rows="6" cols="50">{{ blog.contenu }}</textarea>	
 
+   <input type="hidden" name="image" value="{{ blog.image }}" >
+
 <div id="conteneurSubmit">
-	<input type="submit" name="modifierSubmit" value="modifier" id="submit">
-	<input type="submit" name="supprimerSubmit" value="supprimer" id="submit">
+	<input type="submit" name="modifier" value="modifier" id="submit">
+	<input type="submit" name="supprimer" value="supprimer" id="submit">
 </div>
 	{{ messageServeur |raw }}
 </form>

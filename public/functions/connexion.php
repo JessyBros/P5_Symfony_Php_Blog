@@ -3,7 +3,7 @@
 if (isset($_POST["submit"])) {
 	$mdp  = isset($_POST['mdp']) ? $_POST['mdp'] : NULL;
 	
-	if ($mdp == $connexion["motDePasse"]) {
+	if (password_verify($mdp, $connexion["motDePasse"])) {
 		$_SESSION['connecter'] = true;
 		$_SESSION['id'] = $connexion['id'];
 		$_SESSION['admin'] = $connexion['prenom'] . " " . $connexion['nom'];
