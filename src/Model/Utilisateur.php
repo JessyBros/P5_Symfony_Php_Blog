@@ -60,6 +60,15 @@ class Utilisateur extends Manager
     }
 
 
-
+    public function verificationEmail($email)
+    {
+        $connexion = $this-> connexionBdd($email);
+        $req = $connexion->prepare('SELECT email FROM utilisateur WHERE email = ?');
+        $req->execute(array(
+            $email
+        ));
+        $post = $req->fetch();
+        return $post;
+    }
 
 }

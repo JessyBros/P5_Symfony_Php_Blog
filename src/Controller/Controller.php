@@ -53,14 +53,17 @@ class Controller
 	    $connexion = $connexionManager-> connexionAdministrateur($email);
         require "public/functions/connexion.php";
 
+        
+        
         echo $this->twig->render('visiteur/connexion.twig',["messageServeur" => $messageServeur]);
     }
 
     public function inscription()
     {
         $inscriptionManager = new Utilisateur();
+        $verificationEmailManager = new Utilisateur;
         require "public/functions/inscription.php";
-
+        
         echo $this->twig->render('visiteur/inscription.twig',["messageServeur" => $messageServeur]);
     }
 
