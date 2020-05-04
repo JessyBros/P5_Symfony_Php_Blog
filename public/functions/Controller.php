@@ -50,7 +50,7 @@ class Controller
     {
         $connexionManager = new Utilisateur;
         $email  = isset($_POST['email']) ? $_POST['email'] : NULL;
-	    $connexion = $connexionManager-> connexionAdministrateur($email);
+	$connexion = $connexionManager-> connexionAdministrateur($email);
         require "public/functions/connexion.php";
 
         
@@ -70,8 +70,10 @@ class Controller
     public function retrouvezVotreCompte()
     {
         $verificationEmailManager = new Utilisateur;
-        require "public/functions/recupererCompteMail.php";
-        require "public/functions/retrouvezVotreCompte.php";
+	require "public/functions/recupererCompteMail.php";
+	require "public/functions/retrouvezVotreCompte.php";
+	
+        
         echo $this->twig->render('visiteur/retrouvezVotreCompte.twig',["messageServeur" => $messageServeur]);
     }
 

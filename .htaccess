@@ -4,20 +4,20 @@ deny from all
 </files>
 
 #--------------------------------------------------
-# R�pertoire : /Blog Professionnel/
+# Répertoire : /Blog Professionnel/
 #--------------------------------------------------
 
 # Le serveur doit suivre les liens symboliques :
 Options +FollowSymlinks
 
-# Activation du module de r��criture d'URL :
+# Activation du module de réécriture d'URL :
 RewriteEngine on
 
 
 ErrorDocument 404 /templates/blog/404.twig
 
 #--------------------------------------------------
-# R�gles de r��criture d'URL : 
+# Règles de réécriture d'URL : 
 #--------------------------------------------------
 
 
@@ -25,6 +25,8 @@ RewriteRule ^$ index.php?action=accueil
 
 RewriteRule ^connexion$ index.php?action=connexion
 RewriteRule ^inscription$ index.php?action=inscription
+RewriteRule ^retrouvez-votre-compte$ index.php?action=retrouvez-votre-compte
+RewriteRule ^nouveau-mot-de-passe&id=([0-9]+)&email=(.*)$ index.php?action=nouveau-mot-de-passe&id=$1&email=$2
 
 RewriteRule ^blogs$ index.php?action=blogs
 RewriteRule ^blog-([0-9]+)$ index.php?action=blog&numero=$1

@@ -14,9 +14,10 @@ if (isset($_POST['submit']))
                 message : " . $message . "<br>"
             ));
         }else{  
-            $message = "Nom : " . $nom . "<br>
-            Email : " . $email . "<br>
-            message : " . $message . "<br>";
+            $message = "
+            Nom : " . $nom . "
+            Email : " . $email . "
+            message : " . $message;
         }
         //vérifie si l'hote autorise les \r
         if(preg_match("#@(hotmail|live|msn).[a-z]{2,4}$#", "j.bros@hotmail.fr"))
@@ -36,9 +37,9 @@ if (isset($_POST['submit']))
             return str_replace($bad,"",$string);
         } 
         
-        /*$headers = "From: Nj Partners<user12295760@us-imm-node3b.000webhost.io>" . $passage_ligne; //mail du serveur (pour le connaître enlever cette ligne et récupérer sur le mail)
-        $headers.= "Reply-to: Nj Partners <user12295760@us-imm-node3b.000webhost.io>" . $passage_ligne; //Celui qui envoi*/
-        $headers= "MIME-Version: 1.0" . $passage_ligne; //MIME Version
+        $headers = "From: Blog de Jessy <jesscmnk@world-400.fr.planethoster.net>" . $passage_ligne; //mail du serveur (pour le connaître enlever cette ligne et récupérer sur le mail)
+        $headers.= "Reply-to: Blog de Jessy <jesscmnk@world-400.fr.planethoster.net>" . $passage_ligne; //Celui qui envoi
+        $headers.= "MIME-Version: 1.0" . $passage_ligne; //MIME Version
         $headers.= "X-Priority: 3".$passage_ligne;
         $headers.= 'Content-Type: multipart/alternative; boundary='.$boundary .' '. $passage_ligne; //Content (2 versions ex:text/plain et text/html)
         $email_message = '--' . $boundary . $passage_ligne; //Ouverture boundary

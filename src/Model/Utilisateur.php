@@ -59,16 +59,39 @@ class Utilisateur extends Manager
         return $req;
     }
 
-
     public function verificationEmail($email)
     {
         $connexion = $this-> connexionBdd($email);
-        $req = $connexion->prepare('SELECT email FROM utilisateur WHERE email = ?');
+        $req = $connexion->prepare('SELECT id, email FROM utilisateur WHERE email = ?');
         $req->execute(array(
             $email
         ));
         $post = $req->fetch();
         return $post;
     }
+
+    public function nouveauMotDePasse($mdp, $id, $email)
+    {
+        $connexion = $this-> connexionBdd($mdp,$id, $email);
+        $req = $connexion->prepare('UPDATE utilisateur SET motDePasse = ? WHERE id= ? AND email = ?');
+        $req->execute(array(
+            $mdp,
+            $id,
+            $email
+        ));
+        return $req;
+    }
+
+    public function verificationUtilisateurExist($id, $email)
+    {
+         $connexion = $this->connexionBdd($id, $email);
+         $req = $connexion->prepare('SELECT * FROM utilisateur  WHERE id= ? AND email = ?');
+         $req->execute(array(
+            $id, $email     
+        ));
+        $post = $req->fetch();
+        return $post;
+    }
+
 
 }

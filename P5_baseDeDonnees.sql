@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS blog;
-USE blog;
+CREATE DATABASE IF NOT EXISTS jesscmnk_blog;
+USE jesscmnk_blog;
 
 
 DROP TABLE IF EXISTS utilisateur;

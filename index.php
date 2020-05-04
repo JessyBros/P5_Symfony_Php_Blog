@@ -34,6 +34,12 @@ $page = new Controller($twig);
 			case 'inscription':
 				$page ->inscription();
 				break;
+			case 'retrouvez-votre-compte':
+				$page ->retrouvezVotreCompte();
+				break;
+			case 'nouveau-mot-de-passe':
+				$page ->nouveauMotDePasse();
+				break;
 			case 'ajouter-un-blog';
 				$page ->ajouterUnBlog();
 				break;
