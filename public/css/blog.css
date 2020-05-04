@@ -18,7 +18,9 @@
 
 #conteneurBlog #image{
     height: 250px;
+    width: 95px;
 }
+
 
 #conteneurBlog #contenu{
     padding: 25px 15px 40px 15px;
