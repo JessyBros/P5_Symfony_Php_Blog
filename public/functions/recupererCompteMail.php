@@ -12,7 +12,7 @@ function recupererCompteMail($email, $id)
                 https://jessy-bros.com/nouveau-mot-de-passe&id=' . $id . '&email=' . $email;
             }
             //vérifie si l'hote autorise les \r
-            if(preg_match("#@(hotmail|live|msn).[a-z]{2,4}$#", $email))
+            if(preg_match("#@(hotmail|outlook|gmail).[a-z]{2,4}$#", $email))
             {
                 $passage_ligne = "\n";
             }

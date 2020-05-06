@@ -14,7 +14,7 @@ Options +FollowSymlinks
 RewriteEngine on
 
 
-ErrorDocument 404 /templates/blog/404.twig
+ErrorDocument 404 http://localhost/p5_symfony_php_blog/templates/404.html
 
 #--------------------------------------------------
 # Règles de réécriture d'URL : 

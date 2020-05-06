@@ -1,0 +1,38 @@
+
+body{
+    margin: 0;
+    font-size: 14px;
+    font-family: Segoe UI,Helvetica,Arial,sans-serif ;
+    color: #24292e;
+    background-color: #37373d;
+    height: 100vh;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 650px;
+    margin: auto;
+    text-align: center;
+}
+
+h1{
+    font-size: 50px;
+    color:#ffffffb3;
+    text-shadow: 1px 1px 10px #15191c;
+    text-align: center;
+}
+p{
+    color:#ffffffb3;
+    font-size: 130%;
+}
+a, a:link, a:visited, a:active, a:focus{
+    text-decoration: none;
+    color: #41a4d1;
+    margin:5px;
+}
+#erreur404{
+    color: #41a4d1;
+}
+
+img{
+    height: 150px;
+}

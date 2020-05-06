@@ -20,7 +20,7 @@ if (isset($_POST['submit']))
             message : " . $message;
         }
         //vérifie si l'hote autorise les \r
-        if(preg_match("#@(hotmail|live|msn).[a-z]{2,4}$#", "j.bros@hotmail.fr"))
+        if(preg_match("#@(hotmail|outlook|gmail).[a-z]{2,4}$#", "j.bros@hotmail.fr"))
         {
             $passage_ligne = "\n";
         }

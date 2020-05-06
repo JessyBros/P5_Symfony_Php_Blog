@@ -56,7 +56,6 @@ $page = new Controller($twig);
 				$page ->utilisateurs();
 				break;
 			default:
-				header('HTTP/1.0 404 Not Found');
-				echo $twig->render('404.twig');
+				$page -> accueil();
 				break;		
 		}
