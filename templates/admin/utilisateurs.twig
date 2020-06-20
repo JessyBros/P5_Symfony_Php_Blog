@@ -6,28 +6,23 @@
 {% endblock %}
 
 {% block content %}
-
-	
-
-    <h1>Liste des utilisateurs inscrits</h1>
+<h1>Liste des utilisateurs inscrits</h1>
     
-    {{ messageServeur |raw }}
+{{ messageServeur |raw }}
 
-    {% for utilisateur in listeUtilisateursInscrits %}
-        <div id="conteneurCommentaire">  
-            <p>{{ utilisateur.nom |upper }} {{ utilisateur.prenom |capitalize}}</p>
-            <p>{{ utilisateur.email }}</p>
-
-             <form action="" method="post">
-                <input type="hidden" name="id" value="{{ utilisateur.id }}" >
-                <div id="conteneurSubmit">
-                    <input type="submit" name="confirmer" value="Confirmer" id="confirmer_submit">
-                    <input type="submit" name="supprimer" value="Supprimer" id="supprimer_submit">
-                </div>
-            </form>
+{% for utilisateur in listeUtilisateursInscrits %}
+<div id="conteneurCommentaire">  
+    <p>{{ utilisateur.nom |upper }} {{ utilisateur.getPrenom |capitalize}}</p>
+    <p>{{ utilisateur.getEmail }}</p>
+    <form action="" method="post">
+        <input type="hidden" name="id" value="{{ utilisateur.getId }}" >
+        <div id="conteneurSubmit">
+            <input type="submit" name="confirmer" value="Confirmer" id="confirmer_submit">
+            <input type="submit" name="supprimer" value="Supprimer" id="supprimer_submit">
         </div>
-    {% else %}
-        <p id="boucleNul">Aucun utilisateur inscrit !</p>
-    {% endfor %}
- 
+    </form>
+</div>
+{% else %}
+<p id="boucleNul">Aucun utilisateur inscrit !</p>
+{% endfor %}
 {% endblock %}

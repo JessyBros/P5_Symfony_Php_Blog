@@ -6,19 +6,14 @@
 {% endblock %}
 
 {% block content %}
-
-	
-
 <h1>Choisissez un blog que vous souhaitez modifier</h1>
 <div id="litesDesBlogs">
   {% for blog in listeDesBlogs %}
-		<a href= "modifier-blog-{{ blog.id }}">
+		<a href= "modifier-blog-{{ blog.getId }}">
       <article>
-        <p id="titre"><strong>{{ blog.id }}. {{ blog.titre }} : </strong></p>
+      <p id="titre"><strong>{{ blog.getTitre }}</strong></p>
      </article>
     </a>
     {% endfor %}
 </div>
-
-
 {% endblock %}

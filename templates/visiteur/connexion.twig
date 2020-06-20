@@ -5,11 +5,9 @@
 {% endblock %}
 
 {% block content %}
-
 <h1>connexion</h1>
 
 <form action="" method="post">
-
 	<label for="email">Votre Email</label>
 	<input type="email" name="email" placeholder="adresse@hotmail.com" id="email" required><br>
 
@@ -21,9 +19,5 @@
 	<a href="retrouvez-votre-compte"><span>Mot de passe oublié ?</span></a>
 
 	{{ messageServeur|raw }}
-		
-
 </form>
-
-
 {% endblock %}

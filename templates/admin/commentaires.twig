@@ -7,29 +7,23 @@
 
 {% block content %}
 
-	
-
 <h1>Liste des commentaires non validés</h1>
 
 {{ messageServeur |raw }}
 
 {% for commentaire in listeDesCommentaires %}
-			<div id="conteneurCommentaire"> 
-                <p>commentaire de <span>{{ commentaire.auteur }}</span> pour le blog n°<span>{{ commentaire.blog_id }}</span></p>
-                <p id="commentaireMessage">{{commentaire.message}}<p>
-
-                <form action="" method="post">
-                    <input type="hidden" name="idCommentaire" value="{{ commentaire.id }}" >
-                    <div id="conteneurSubmit">
-                        <input type="submit" name="valider" value="Valider" id="valider_submit">
-                        <input type="submit" name="supprimer" value="Supprimer" id="supprimer_submit">
-                    </div>
-                </form>
-            </div> 
-    {% else %}
-        <p id="boucleNul">Les utilisateurs n'ont laissés aucun nouveau commentaire.</p>
-    {% endfor %}
-    
-
-
+<div id="conteneurCommentaire"> 
+    <p>commentaire de <span>{{ commentaire.getAuteur }}</span> pour le blog n°<span>{{ commentaire.getBlog_id }}</span></p>
+    <p id="commentaireMessage">{{commentaire.getMessage}}<p>
+    <form action="" method="post">
+        <input type="hidden" name="idCommentaire" value="{{ commentaire.getId }}" >
+        <div id="conteneurSubmit">
+            <input type="submit" name="valider" value="Valider" id="valider_submit">
+            <input type="submit" name="supprimer" value="Supprimer" id="supprimer_submit">
+        </div>
+    </form>
+</div> 
+{% else %}
+<p id="boucleNul">Les utilisateurs n'ont laissés aucun nouveau commentaire.</p>
+{% endfor %}
 {% endblock %}

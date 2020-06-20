@@ -1,7 +1,9 @@
 <?php
 session_start();
 
-use App\Controller\Controller;
+use App\Controller\BlogController;
+use App\Controller\CommentaireController;
+use App\Controller\UtilisateurController;
 use Twig\Loader\FilesystemLoader;
 
 require_once "vendor/autoload.php";
@@ -12,50 +14,54 @@ $loader = new FilesystemLoader(__DIR__ . "/templates");
 /* Appel l'environnement twig */
 $twig = new \Twig\Environment($loader,[
 	'cache' => false /*__DIR__ . '/tmp'*/]);
-
 /* add session */
 $twig->addGlobal('session', $_SESSION);
 
-$page = new Controller($twig);
+$BlogPage = new BlogController($twig);
+$CommentairePage = new CommentaireController($twig);
+$UtilisateurPage = new UtilisateurController($twig);
 
 		switch ($_GET['action']) {
 			case 'accueil':
-				$page -> accueil();
+				$BlogPage -> accueil();
 				break;
 			case 'blogs':
-				$page ->blogs();
+				$BlogPage ->blogs();
 				break;
 			case 'blog':
-				$page ->blog();
+				$BlogPage ->blog();
 				break;
 			case 'connexion':
-				$page ->connexion();
+				$UtilisateurPage ->connexion();
+				break;
+			case 'deconnexion':
+				$UtilisateurPage ->deconnexion();
 				break;
 			case 'inscription':
-				$page ->inscription();
+				$UtilisateurPage ->inscription();
 				break;
 			case 'retrouvez-votre-compte':
-				$page ->retrouvezVotreCompte();
+				$UtilisateurPage ->retrouvezVotreCompte();
 				break;
 			case 'nouveau-mot-de-passe':
-				$page ->nouveauMotDePasse();
+				$UtilisateurPage ->nouveauMotDePasse();
 				break;
 			case 'ajouter-un-blog';
-				$page ->ajouterUnBlog();
+				$BlogPage ->ajouterUnBlog();
 				break;
 			case 'modifier-blogs':
-				$page ->modifierBlogs();
+				$BlogPage ->modifierBlogs();
 				break;
 			case 'modifier-blog':
-				$page ->modifierBlog();
+				$BlogPage ->modifierBlog();
 				break;
 			case 'commentaires':
-				$page ->commentaires();
+				$CommentairePage ->commentaires();
 				break;
 			case 'utilisateurs':
-				$page ->utilisateurs();
+				$UtilisateurPage ->utilisateurs();
 				break;
 			default:
-				$page -> accueil();
+				$BlogPage -> accueil();
 				break;		
 		}

@@ -6,24 +6,21 @@
 {% endblock %}
 
 {% block content %}
-
 <h1>Liste des blogs</h1>
 
 <div id="litesDesBlogs">
   {% for blog in listeDesBlogs %}
-    <a href= "blog-{{ blog.id }}">
+    <a href= "blog-{{ blog.getId }}">
     <article>
-        <p id="titre"><strong>{{ blog.id }}. {{ blog.titre }} : </strong></p>
-        <p id="chapo">{{ blog.chapo }}</p>
-        {% if  blog.dateMiseAJour %}
-          <span id="date">Modifié le {{blog.dateMiseAJour |  date("d-m-Y")}}</span>
+        <p id="titre"><strong>{{ blog.getTitre }} : </strong></p>
+        <p id="chapo">{{ blog.getchapo }}</p>
+        {% if  blog.getDateMiseAJour %}
+          <span id="date">Modifié le {{blog.getDateMiseAJour |  date("d-m-Y")}}</span>
         {% else %}
-         <span id="date">Crée le {{ blog.date | date("d-m-Y") }}</span>
+         <span id="date">Crée le {{ blog.getDate | date("d-m-Y") }}</span>
         {% endif %}
      </article>
      </a>
   {% endfor %}
 </div>
-
-		
 {% endblock %}

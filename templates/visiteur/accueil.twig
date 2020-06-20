@@ -6,7 +6,6 @@
 {% endblock %}
 
 {% block content %}
-	
 <section id="presentation">
 
 	<h1>DÉVELOPPEUR WEB</h1>
@@ -36,20 +35,17 @@
 </section>
 
 <section id="conteneurBlogs">
-
 	<h2>Les derniers blogs</h2>
-
 	<div id="blogs">
 	 {% for blog in lesDerniersBlogs %}
-        <a href= "blog-{{ blog.id }}">
+        <a href= "blog-{{ blog.getId }}">
 			<article>
-				<p><strong>{{ blog.titre}} </strong></p>
-				<img class="blogImage" src="public/images/blogs/{{ blog.image}}" alt="{{blog.titre}}"/>
+				<p><strong>{{ blog.getTitre}} </strong></p>
+				<img class="blogImage" src="public/images/blogs/{{ blog.getImage}}" alt="{{blog.getTitre}}"/>
 			</article>
 		</a>
     {% endfor %}
 	</div>
-
 </section>
 
 <section id="curriculumVitae">
@@ -74,7 +70,6 @@
 	<h2>Contactez-moi</h2>
 
 	<form action="#contactForm" method="post">
-
 		<label for="nom">Nom/Prénom</label>
 		<input type="text" name="nom" placeholder="Votre Nom" id="nom"><br>
 
@@ -85,12 +80,8 @@
 		<textarea name="message" rows="4" cols="50" placeholder="Votre message..."></textarea><br>
 
 		<input type="submit" name="submit" id="submit" value"Envoyer"><br>
-		
-		{{ messageServeur |raw }}
 
+		{{ messageServeur |raw }}
 	</form>
 </section>
-
-
-
-	{% endblock %}
+{% endblock %}

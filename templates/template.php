@@ -21,7 +21,7 @@
             <nav>
                 {% if session.connecter  %}
                     <span id="admin">{{  session.admin }}</span>
-                    <a href="deconnexion">deconnexion</a>
+                    <a href="public/functions/deconnexion.php">deconnexion</a>
                 {% else %}
                     <a href="inscription">inscription</a>
                     |
