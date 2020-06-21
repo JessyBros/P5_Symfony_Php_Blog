@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <META NAME="Language" CONTENT="fr">
+        <link rel="stylesheet" href="public/css/base.css">
+        {% block head %} {% endblock %}
+        <link rel="icon" type="image/png" href="public/images/logo.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/43219f80e6.js" crossorigin="anonymous"></script>
+        <META NAME="Description" CONTENT=" Bienvenue sur le blog de Jessy BROS, à l'occasion d'un projet de cours.">
+    </head>
+
+    <body>
+        <header>         
+	        <nav>
+		        <a href="http://localhost/p5_symfony_php_blog/">Accueil</a>
+		        <a href="blogs">Blogs</a>
+            </nav>     
+            <img class="logo" src="public/images/logo.png" alt="logo | Blog d�veloppeur web"/>  
+            <nav>
+                {% if session.connecter  %}
+                    <span id="admin">{{  session.admin }}</span>
+                    <a href="public/functions/deconnexion.php">deconnexion</a>
+                {% else %}
+                    <a href="inscription">inscription</a>
+                    |
+                    <a href="connexion">connexion</a>
+                {% endif  %}
+	        </nav>
+        </header>
+
+        <section>
+            {% block content %} {% endblock %}
+        </section>
+
+        <footer>
+         {% if session.connecter  %}          
+                <nav id="menuFooter">
+                    <a href="ajouter-un-blog">Ajouter un blog</a> 
+                    <a href="modifier-blogs">Blogs</a>
+                    <a href="commentaires">Commentaires</a> 
+                    <a href="utilisateurs">Utilisateurs</a> 
+                </nav>
+            {% endif %}
+            <div id="footer">
+                <div>Mention Légale</div>
+                <div>COPYRIGHT {{ "now"|date("Y") }} - Jessy BROS</div>               
+                <ul>
+                    <li>
+                        <a href="https://www.facebook.com/jessy.bros.1" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://github.com/SiProdZz" target="_blank">
+                           <i class="fab fa-github"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </body>
+</html>

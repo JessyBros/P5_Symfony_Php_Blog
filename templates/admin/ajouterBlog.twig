@@ -1,0 +1,24 @@
+{% extends "base.twig" %}
+
+
+{% block content %}
+<h1>Ajouter un blog</h1>
+
+<form action="" method="post" enctype="multipart/form-data">
+	<label for="titre">titre</label>
+	<input type="text" name="titre" id="titre" <br>
+
+	<label for="chapo">Chapo</label>
+	<input type="text" name="chapo" id="chapo"><br>
+
+    <label for="contenu">Contenu</label>
+    <textarea name ="contenu" id="contenu" rows="4" cols="50"></textarea>
+
+    <label for="image">Choisir une image</label>
+	<input type="file" name="image"  id="image"><br>
+	
+	<input type="submit" name="submit" value="Ajouter" id="submit">
+
+	{{ messageServeur |raw }}
+</form>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.twig" %}
+
+{% block head %} 
+        <title>Retrouvez votre compte</title>
+{% endblock %}
+
+{% block content %}
+<h1>Retrouvez votre compte</h1>
+
+<form action="" method="post">
+	<label for="email">Veuillez saisir votre adresse e-mail ! </label>
+	<input type="email" name="email" placeholder="adresse@hotmail.com" id="email" required><br>
+	<input type="submit" name="submit" value="rechercher" id="submit" required><br>
+	{{ messageServeur|raw }}
+</form>
+{% endblock %}

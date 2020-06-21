@@ -1,0 +1,29 @@
+{% extends "base.twig" %}
+
+{% block head %} 
+    <title>Admin modification du blog {{ blog.id }}</title>
+		<link rel="stylesheet" href="public/css/modifierBlog.css">
+{% endblock %}
+
+{% block content %}
+<h1>Modifier mon Blog </h1>
+
+<form action="" method="post" enctype="multipart/form-data">
+	<label for="titre">titre</label>
+	<input type="text" name="titre" value="{{ blog.getTitre }}" id="titre" <br>
+
+	<label for="chapo">Chapo</label>
+	<input type="text" name="chapo" value="{{ blog.getChapo }}" id="chapo"><br>
+
+	<label for="contenu">Contenu</label>
+  	<textarea name="contenu" id="contenu" rows="6" cols="50">{{ blog.getContenu }}</textarea>	
+
+   <input type="hidden" name="image" value="{{ blog.getImage }}" >
+
+	<div id="conteneurSubmit">
+		<input type="submit" name="modifier" value="modifier" id="submit">
+		<input type="submit" name="supprimer" value="supprimer" id="submit">
+	</div>
+	{{ messageServeur |raw }}
+</form>
+{% endblock %}

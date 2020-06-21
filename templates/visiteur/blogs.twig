@@ -1,0 +1,26 @@
+{% extends "base.twig" %}
+
+{% block head %} 
+    <title>Liste Blogs | Blog développeur web</title>
+		<link rel="stylesheet" href="public/css/blogs.css">
+{% endblock %}
+
+{% block content %}
+<h1>Liste des blogs</h1>
+
+<div id="litesDesBlogs">
+  {% for blog in listeDesBlogs %}
+    <a href= "blog-{{ blog.getId }}">
+    <article>
+        <p id="titre"><strong>{{ blog.getTitre }} : </strong></p>
+        <p id="chapo">{{ blog.getchapo }}</p>
+        {% if  blog.getDateMiseAJour %}
+          <span id="date">Modifié le {{blog.getDateMiseAJour |  date("d-m-Y")}}</span>
+        {% else %}
+         <span id="date">Crée le {{ blog.getDate | date("d-m-Y") }}</span>
+        {% endif %}
+     </article>
+     </a>
+  {% endfor %}
+</div>
+{% endblock %}
