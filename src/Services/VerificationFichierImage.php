@@ -10,7 +10,6 @@ class VerificationFichierImage{
         } else {
             $move = "/../../public/images/blogs/";
             $nom_fichier = $_FILES['image']['name'];
-            $source = $_FILES['image']['tmp_name'];
             $type_fichier = $_FILES['image']['type'];
             $taille_fichier = $_FILES['image']['size'];
             if ($nom_fichier == ".htaccess") {
@@ -21,10 +20,8 @@ class VerificationFichierImage{
                 $GLOBALS['$messageServeur'] = '<p id="messageServeur">L\'image ne doit pas dépassé 2GO</p>';
             } else {
                 move_uploaded_file($_FILES['image']['tmp_name'], __DIR__.$move. $_FILES["image"]['name']);
-                $tabRemplacement = array("é"=>"e", "è"=>"e", "à"=>"a"); //Changing special characters
                 $handle = fopen("public/images/blogs/".$nom_fichier, 'r'); //ouverture du fichier
                 $content = fread($handle, $taille_fichier); //lecture du fichier
-                $encoded_content = chunk_split(base64_encode($content)); //Encoding
                 $f = fclose($handle); //File closing
                 $GLOBALS['$imageValider'] = true;
             }

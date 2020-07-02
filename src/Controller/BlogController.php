@@ -11,7 +11,6 @@ use App\Services\VerificationFichierImage;
 class BlogController
 {    
     private $twig;
-    private $view;
 
     public  function __construct($twig)
     {
@@ -113,7 +112,7 @@ class BlogController
             $imageValider = isset($GLOBALS['$imageValider']) ? $GLOBALS['$imageValider'] : NULL;
             
             if ($imageValider){               
-                $ajouterBlog = $this->blogManager -> ajouterBlog($titre, $auteur, $chapo, $contenu, $image);
+                $this->blogManager -> ajouterBlog($titre, $auteur, $chapo, $contenu, $image);
                 $messageServeur ='<p id="messageServeurTrue">Le blog a bien été enregistré avec succès !</p>';
             }
         } else {
@@ -165,14 +164,13 @@ class BlogController
         // début supprimer blog
         if (isset($_POST["supprimer"])) {
             $image  = isset($_POST['image']) ? $_POST['image'] : NULL;
-            $supprimerBlog = $this->blogManager -> supprimerBlog($id);
+            $this->blogManager -> supprimerBlog($id);
             $supprimerCommentairesDuBlog = $commentaireManager -> supprimerCommentairesDuBlog($id);
             $pathImage = 'public/images/blogs/' . $image;
             if (file_exists($pathImage)) {
                 unlink($pathImage);
             }    
             header("Location:modifier-blogs");
-            exit;
         }
         // fin supprimer blog
 

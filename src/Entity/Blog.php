@@ -12,7 +12,7 @@ class Blog
     private string $contenu;
     private string $image;
     private $date;
-    private $dateMiseAJourj;
+    private $dateMiseAJour;
     private  $utilisateur_id;
 
     /* CONSTRUCTEUR */

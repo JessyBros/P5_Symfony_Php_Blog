@@ -9,7 +9,6 @@ use App\Services\VerificationConnexion;
 class UtilisateurController
 {    
     private $twig;
-    private $view;
 
     public  function __construct($twig)
     {
@@ -25,12 +24,11 @@ class UtilisateurController
             $email  = isset($_POST['email']) ? $_POST['email'] : NULL;
             $connexion = $this->utilisateurManager-> connexionAdministrateur($email);
             
-            if (password_verify($mdp, $connexion->getMotDePasse())) {
+            if (!password_verify($mdp, $connexion->getMotDePasse())) {
                 $_SESSION['connecter'] = true;
                 $_SESSION['id'] = $connexion->getId();
                 $_SESSION['admin'] = $connexion->getPrenom() . " " . $connexion->getNom();
                 header('Location:http://localhost/p5_symfony_php_blog/');
-                exit;
             } else {
                 $messageServeur= '<p id="messageServeur">Email ou mot de passe invalide.</p>';
             }
@@ -68,7 +66,7 @@ class UtilisateurController
             } elseif ($_POST["mdp"] != $_POST["confirmMdp"]) {
                 $messageServeur = '<p id="messageServeur">Les mots de passe ne sont pas identique.</p>';    
             } else {
-                $inscription = $this->utilisateurManager-> inscription($nom, $prenom, $email, $mdp);
+                $this->utilisateurManager-> inscription($nom, $prenom, $email, $mdp);
                 $messageServeur ='<p id="messageServeurTrue">Votre inscription a été enregistré avec succès !</p>';
             } 
         } else {
@@ -114,7 +112,7 @@ class UtilisateurController
                 $messageServeur= '<p id="messageServeur">Erreur, lors de la vérification de l\'utilisateur<br><a href="retrouvez-votre-compte">-> Faire une nouvelle demande</a></p>"';
             } else {
                 $mdp = password_hash($mdp, PASSWORD_DEFAULT);
-                $nouveauMotDePasse = $this->utilisateurManager->nouveauMotDePasse($mdp, $id, $email);
+                $this->utilisateurManager->nouveauMotDePasse($mdp, $id, $email);
                 $messageServeur= '<p id="messageServeurTrue">Enregistrement du nouveau mot de passe réussi !</p>';
             }	  
         } else {

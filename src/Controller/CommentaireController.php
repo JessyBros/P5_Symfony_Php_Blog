@@ -8,7 +8,6 @@ use App\Services\VerificationConnexion;
 class CommentaireController
 {    
     private $twig;
-    private $view;
 
     public  function __construct($twig)
     {
