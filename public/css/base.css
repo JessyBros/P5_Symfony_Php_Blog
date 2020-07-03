@@ -86,7 +86,7 @@ textarea {
 }
 
 input[type="submit"] {
-  color:#ffffffb3;
+  color: #ffffffb3;
   cursor: pointer;
   width: 80%;
   max-width: 350px;
@@ -99,7 +99,7 @@ input[type="submit"] {
 input[type="submit"]:hover {
   color: #15191c;
   background-color: #41a4d1;
-  border: 1px solid #15191c;  
+  border: 1px solid #15191c;
   font-weight: bold;
 }
 
@@ -113,7 +113,7 @@ form span {
 [type="file"] {
   display: none;
 }
-     
+
 label[for="image"] {
   cursor: pointer;
   font-weight: bold;
@@ -132,7 +132,7 @@ label[for="image"] {
 }
   
 label[for="image"]:hover {
-  color:#41a4d1; 
+  color: #41a4d1;
 }
 
 button {
@@ -148,16 +148,19 @@ button:hover {
   color:#41a4d1;
 }
 
-ul, li, ol {
+ul,
+li,
+ol {
   text-decoration: none;
-  color:transparent;
+  color: transparent;
 }
 
 ul {
-  padding-inline-start:0;
+  padding-inline-start: 0;
 }
+
 li {
- display: inline;
+  display: inline;
 }
 
 /* Retour message serveur */
@@ -166,13 +169,13 @@ li {
   color: darkred;
   font-size: 110%;
   padding: 5px;
-  background-color: #15191c ;
+  background-color: #15191c;
   border: 1px solid darkred;
   max-width: 300px;
   margin: 5px auto;
 }
 
- #messageServeurTrue {
+#messageServeurTrue {
   text-align: center;
   color: darkgreen;
   font-size: 110%;
@@ -180,7 +183,7 @@ li {
   background-color: #15191c ;
   border: 1px solid darkgreen;
   max-width: 300px;
-  margin:5px auto;
+  margin: 5px auto;
 }
 
 #boucleNul {
@@ -196,7 +199,7 @@ header {
   background-color: #15191c;
   font-weight: 600;
   padding: 10px;
-  border-bottom:1px solid #adadaf;
+  border-bottom: 1px solid #adadaf;
 }
 
 header a:hover {
@@ -223,6 +226,7 @@ footer {
   justify-content: space-around;
   align-items: center;
 }
+
 #footer li {
   display: inline;
   margin: 5px;
@@ -230,8 +234,8 @@ footer {
 }
 
 #menuFooter {
-  border-bottom:1px solid #adadaf;
-  border-top:1px solid #adadaf;
+  border-bottom: 1px solid #adadaf;
+  border-top: 1px solid #adadaf;
   font-weight: 600;
   padding: 10px;
 }
