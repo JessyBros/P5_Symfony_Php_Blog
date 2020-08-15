@@ -10,7 +10,7 @@ class Utilisateur
     private string $prenom;
     private string $email;
     private string $motDePasse;
-    private bool $administrateur;
+    private bool $droit_administrateur;
 
     /* CONSTRUCTEUR */
     public function __construct(array $data){
@@ -64,9 +64,9 @@ class Utilisateur
     {
       return $this->date;
     }
-    public function getAdministrateur()
+    public function getDroit_administrateur()
     {
-      return $this->administrateur;
+      return $this->droit_administrateur;
     }
 
     /* SETTER */
@@ -108,7 +108,6 @@ class Utilisateur
         return $this;
       }
     }
-
       
     /* MOT DE PASSE */
     public function setMotDePasse(string $motDePasse):Utilisateur
@@ -127,10 +126,10 @@ class Utilisateur
     }
 
     /* Administrateur */
-    public function setAdministrateur(bool $administrateur):Utilisateur
+    public function setDroit_administrateur(bool $droit_administrateur):Utilisateur
     {
-      if (is_bool($administrateur)) {
-        $this->administrateur = $administrateur;
+      if (is_bool($droit_administrateur)) {
+        $this->droit_administrateur = $droit_administrateur;
         return $this;
       }
     }

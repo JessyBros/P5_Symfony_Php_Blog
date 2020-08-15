@@ -2,7 +2,7 @@
 
 {% block head %} 
         <title>Jessy BROS | Blog développeur web</title>
-		 <link rel="stylesheet" href="public/css/accueil.css">
+		 <link rel="stylesheet" href="css/accueil.css">
 {% endblock %}
 
 {% block content %}
@@ -17,7 +17,7 @@
 		<div class="text">
 			<div>
 				<h2>Blog de Jessy BROS</h2>
-				<img id="photoJessy" src="public/images/jessy_Bros.jpg" alt="Photo de jessy | Blog développeur web">
+				<img id="photoJessy" src="images/jessy_Bros.jpg" alt="Photo de jessy | Blog développeur web">
 				<p>Bienvenue sur mon petit blog ! :D<br>
 				Je suis un jeune developpeur web spécialisé en back-end.<br>
 				À travers ce site, vous allez pouvoir suivre toutes mes aventures ! <br>
@@ -26,7 +26,7 @@
 			<div>
 				<h3>Formation chez Openclassrooms</h3>
 				<div id="openclassrooms">
-					<img id="photoOpenclassrooms" src="public/images/openclassrooms.png" alt="logo openclassrooms">
+					<img id="photoOpenclassrooms" src="images/openclassrooms.png" alt="logo openclassrooms">
 					<p><em>Développeur d'application - PHP / Symfony</em></p>
 				<div>
 			</div>
@@ -41,7 +41,7 @@
         <a href= "blog-{{ blog.getId }}">
 			<article>
 				<p><strong>{{ blog.getTitre}} </strong></p>
-				<img class="blogImage" src="public/images/blogs/{{ blog.getImage}}" alt="{{blog.getTitre}}"/>
+				<img class="blogImage" src="images/blogs/{{ blog.getImage}}" alt="{{blog.getTitre}}"/>
 			</article>
 		</a>
     {% endfor %}

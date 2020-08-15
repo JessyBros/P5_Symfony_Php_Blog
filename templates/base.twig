@@ -3,9 +3,9 @@
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <META NAME="Language" CONTENT="fr">
-        <link rel="stylesheet" href="public/css/base.css">
+        <link rel="stylesheet" href="css/base.css">
         {% block head %} {% endblock %}
-        <link rel="icon" type="image/png" href="public/images/logo.png" />
+        <link rel="icon" type="image/png" href="/images/logo.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://kit.fontawesome.com/43219f80e6.js" crossorigin="anonymous"></script>
         <META NAME="Description" CONTENT=" Bienvenue sur le blog de Jessy BROS, à l'occasion d'un projet de cours.">
@@ -14,10 +14,10 @@
     <body>
         <header>         
 	        <nav>
-		        <a href="http://localhost/p5_symfony_php_blog/">Accueil</a>
-		        <a href="blogs">Blogs</a>
+		        <a href="/">Accueil</a>
+		        <a href="liste-des-blogs">Blogs</a>
             </nav>     
-            <img class="logo" src="public/images/logo.png" alt="logo | Blog d�veloppeur web"/>  
+            <img class="logo" src="/images/logo.png" alt="logo | Blog d�veloppeur web"/>  
             <nav>
                 {% if session.connecter  %}
                     <span id="admin">{{  session.admin }}</span>

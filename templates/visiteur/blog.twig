@@ -3,7 +3,7 @@
 
 {% block head %} 
         <title>{{blog.getTitre}} | Blog développeur web</title>
-		 <link rel="stylesheet" href="public/css/blog.css">
+		 <link rel="stylesheet" href="/css/blog.css">
 {% endblock %}
 
 {% block content %}
@@ -11,7 +11,7 @@
     <h1>{{ blog.getTitre }}</h1>
     <p id="chapo"> {{ blog.getChapo }}</p>
     <article>
-        <img id="image" src="public/images/blogs/{{ blog.getImage }}" />
+        <img id="image" src="images/blogs/{{ blog.getImage }}" />
         <p id="contenu"> {{ blog.getContenu | raw }}</p>
         <p id="auteur"> Blog n° {{ blog.id }} écrit par {{ blog.getAuteur }}, 
         {% if  blog.getDateMiseAJour %}
@@ -61,7 +61,7 @@
 
 <section id="conteneurCommentaires">
  <h2> Liste des commentaires</h2>
-   {% for commentaire in commentairesBlog %}
+   {% for commentaire in commentairesValider %}
 		<article> 
             <p><span id="auteurCommentaire">{{ commentaire.getAuteur }} : </span> {{ commentaire.getMessage }}</p>
             <span id="dateCommentaire">{{ commentaire.getDate |date("d/m/Y H:m") }}</p>

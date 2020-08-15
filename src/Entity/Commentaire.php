@@ -8,7 +8,7 @@ class Commentaire
     private int $id;
     private string $auteur;
     private string $message;
-    private bool $valider;
+    private bool $commentaire_valider;
     private int $blog_id;
 
       /* CONSTRUCTEUR */
@@ -49,9 +49,9 @@ class Commentaire
       return $this->message;
     }
 
-    public function getValider()
+    public function getCommentaire_valider()
     {
-      return $this->valider;
+      return $this->commentaire_valider;
     }
 
     public function getBlog_id()
@@ -91,10 +91,10 @@ class Commentaire
     }
 
     /* VALIDER */
-    public function setValider(bool $valider):Commentaire
+    public function setCommentaire_valider(bool $commentaire_valider):Commentaire
     {
-      if (is_bool($valider)) {
-        $this->valider = $valider;
+      if (is_bool($commentaire_valider)) {
+        $this->commentaire_valider = $commentaire_valider;
         return $this;
       }
     }
