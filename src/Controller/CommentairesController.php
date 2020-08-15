@@ -1,13 +1,13 @@
 <?php
 namespace App\Controller;
 
-use PDO;
 use App\Model\CommentaireManager;
 use App\Services\VerificationConnexion;
 
-class CommentaireController
+class CommentairesController
 {    
     private $twig;
+    private $commentaireManager;
 
     public  function __construct($twig)
     {
@@ -18,7 +18,7 @@ class CommentaireController
     public function commentaires()
     {
         $verificationConnexion = new VerificationConnexion;
-        $verificationConnexion->verificationConnexion();
+        $verificationConnexion->verificationConnexion($this->twig);
 
         $idCommentaire = isset($_POST['idCommentaire']) ? $_POST['idCommentaire'] : NULL;
         
@@ -26,6 +26,7 @@ class CommentaireController
         if (isset($_POST["valider"])) {
             $validerCommentaire = $this->commentaireManager -> validerCommentaire($idCommentaire);
             if ($validerCommentaire) {
+                $messageServeur = '<p id="messageServeurTrue">Le commentaire a bien été enregistré !</p>';
             } else {
                 $messageServeur = '<p id="messageServeur">Erreur lors de la validation du commentaire !</p>';
             }
@@ -41,7 +42,7 @@ class CommentaireController
         }	
         // fin valider un commentaire
 
-        echo $this->twig ->render('admin/commentaires.twig',["listeDesCommentaires" => $this->commentaireManager ->listeDesCommentaires(),"messageServeur" => $messageServeur]);
+        echo $this->twig ->render('admin/commentaires.twig',["commentairesEnAttenteDeValidation" => $this->commentaireManager ->CommentairesEnAttenteDeValidation(),"messageServeur" => $messageServeur]);
     }
 }
 

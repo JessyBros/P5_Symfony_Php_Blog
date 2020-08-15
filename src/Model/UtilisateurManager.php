@@ -7,10 +7,9 @@ use PDO;
 
 class UtilisateurManager extends Manager
 {
-    // INSCRIPTION UTILISATEUR
     public function inscription($nom, $prenom, $email, $mdp)
     {
-         $req = $this->getBdd()->prepare('INSERT INTO utilisateur SET nom = ?, prenom = ?, email = ?, motDePasse = ?, administrateur = false ');
+         $req = $this->getBdd()->prepare('INSERT INTO utilisateur SET nom = ?, prenom = ?, email = ?, motDePasse = ?, droit_administrateur = false ');
          $req->execute(array(
              $nom,
              $prenom,
@@ -21,25 +20,25 @@ class UtilisateurManager extends Manager
          $req->closeCursor();
 	}
 
-    // CONNEXION ADMINISTRATEUR
     public function connexionAdministrateur($email)
     {
-        $req = $this->getBdd()->prepare('SELECT * FROM utilisateur WHERE email= ? AND administrateur = true');
+        $req = $this->getBdd()->prepare('SELECT * FROM utilisateur WHERE email= ? AND droit_administrateur = true');
         $req->execute(array(
             $email     
          ));
          $data = $req ->fetch(PDO::FETCH_ASSOC);
+         if (!$data) {
+            return null;
+         }
          $var = new Utilisateur($data);
          return $var;
          $req->closeCursor();
     }
 
-
-    // AFFICHE LES UTILISATEURS INSCRITS -> NON ADMINISTRATEUR
     public function listeUtilisateursInscrits()
     {
         $var = [];
-        $req = $this->getBdd()->prepare('SELECT * FROM utilisateur WHERE administrateur = false');
+        $req = $this->getBdd()->prepare('SELECT * FROM utilisateur WHERE droit_administrateur = false');
         $req->execute();
         while($data = $req ->fetch(PDO::FETCH_ASSOC))
         {
@@ -49,10 +48,9 @@ class UtilisateurManager extends Manager
         $req->closeCursor();
     }    
 
-    // VALIDER L'INSCRIPTION DE L'UTILISATEUR
     public function confirmerUtilisateur($idUtilisateur)
     {
-        $req = $this->getBdd()->prepare('UPDATE utilisateur SET administrateur = true WHERE id= ?');
+        $req = $this->getBdd()->prepare('UPDATE utilisateur SET droit_administrateur = true WHERE id= ?');
         $req->execute(array(
             $idUtilisateur
         ));
@@ -60,7 +58,6 @@ class UtilisateurManager extends Manager
         $req->closeCursor();
     }
 
-    // REFUSER L'INSCRIPTION D'UN UTILISATEUR
     public function supprimerUtilisateur($idUtilisateur)
     {
         $req = $this->getBdd()->prepare('DELETE FROM utilisateur WHERE id = ?');
@@ -71,10 +68,8 @@ class UtilisateurManager extends Manager
         $req->closeCursor();
     }
 
-    // VERIFIE SI LE MAIL EXISTE
-    public function verificationEmail(string $email)
+    public function verificationEmailExistant(string $email)
     {
-       
         $req = $this->getBdd()->prepare('SELECT id, email FROM utilisateur WHERE email = ?');
         $req->execute([
             $email     
@@ -88,8 +83,7 @@ class UtilisateurManager extends Manager
          $req->closeCursor();
     }
 
-    // MODIFICATION DU MOT DE PASSE ACTUEL
-    public function nouveauMotDePasse($mdp, $id, $email)
+    public function modificationMotDePasse($mdp, $id, $email)
     {
         $req = $this->getBdd()->prepare('UPDATE utilisateur SET motDePasse = ? WHERE id= ? AND email = ?');
         $req->execute(array(
@@ -101,7 +95,6 @@ class UtilisateurManager extends Manager
         $req->closeCursor();
     }
 
-    // VERIFICATION UTILISATEUR EXISTANT
     public function verificationUtilisateurExist($id, $email)
     {
          $req = $this->getBdd()->prepare('SELECT * FROM utilisateur  WHERE id= ? AND email = ? Limit 1');

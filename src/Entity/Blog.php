@@ -13,7 +13,7 @@ class Blog
     private string $image;
     private $date;
     private $dateMiseAJour;
-    private  $utilisateur_id;
+    private $utilisateur_id;
 
     /* CONSTRUCTEUR */
     public function __construct(array $data){

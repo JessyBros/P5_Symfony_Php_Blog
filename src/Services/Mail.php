@@ -61,11 +61,11 @@ class Mail{
                 if (get_magic_quotes_gpc()){  
                     $message = stripslashes(htmlentities(
                         'Pour rénitiliser votre mot de passe, cliquez sur le lien en suivant
-                        https://jessy-bros.com/nouveau-mot-de-passe&id=' . $id . '&email=' . $email
+                        https://jessy-bros.com/nouveau-mot-de-passe-' . $id . '-' . $email
                     ));
                 } else {  
                     $message = 'Pour rénitiliser votre mot de passe, cliquez sur le lien en suivant
-                    https://jessy-bros.com/nouveau-mot-de-passe&id=' . $id . '&email=' . $email;
+                    https://jessy-bros.com/nouveau-mot-de-passe-' . $id . '-' . $email;
                 }
                 //vérifie si l'hote autorise les \r
                 if (preg_match("#@(hotmail|outlook|gmail).[a-z]{2,4}$#", $email)) {

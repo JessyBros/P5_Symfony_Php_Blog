@@ -2,7 +2,7 @@
 
 {% block head %} 
     <title>Admin commentaires {{ blog.id }}</title>
-		<link rel="stylesheet" href="public/css/commentaires.css">
+		<link rel="stylesheet" href="css/commentaires.css">
 {% endblock %}
 
 {% block content %}
@@ -11,7 +11,7 @@
 
 {{ messageServeur |raw }}
 
-{% for commentaire in listeDesCommentaires %}
+{% for commentaire in commentairesEnAttenteDeValidation %}
 <div id="conteneurCommentaire"> 
     <p>commentaire de <span>{{ commentaire.getAuteur }}</span> pour le blog n°<span>{{ commentaire.getBlog_id }}</span></p>
     <p id="commentaireMessage">{{commentaire.getMessage}}<p>

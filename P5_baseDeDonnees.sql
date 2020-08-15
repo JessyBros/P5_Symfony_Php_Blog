@@ -9,7 +9,7 @@ CREATE TABLE utilisateur
     prenom VARCHAR(45) NOT NULL,
     email VARCHAR(70) NOT NULL,
     motDePasse VARCHAR(150) NOT NULL,
-    administrateur BOOLEAN NOT NULL
+    droit_administrateur BOOLEAN NOT NULL
 );
 
 DROP TABLE IF EXISTS blog;
@@ -34,13 +34,13 @@ CREATE TABLE commentaire
     auteur VARCHAR(150) NOT NULL,
     message TEXT NOT NULL,
     date DATETIME NOT NULL,
-    valider BOOLEAN NOT NULL,
+    commentaire_valider BOOLEAN NOT NULL,
     blog_id INT,
     FOREIGN KEY (blog_id) REFERENCES blog(id)
 );
 
 INSERT INTO utilisateur
-SET nom="BROS", prenom="Jessy", email="j.bros@hotmail.fr", motDepasse="$2y$10$5MCRVEvFS2rHDSYOUCvCiuWYZBmNrmpNPj0I3d/oM1f/OtUg5RtIm", administrateur = true;
+SET nom="BROS", prenom="Jessy", email="j.bros@hotmail.fr", motDepasse="$2y$10$4nJUp3aUBbSRoXYO10qj8.v5T8IQ00WU9Gy.oIyowwSeMnbvo7GxS", droit_administrateur = true;
 
 INSERT INTO utilisateur
 VALUES (NULL, "CRAFT", "Lea", "lea@hotmail.fr", "$2y$10$ueqn6ysfNBWPdVhODRUaFOOVY.S69WcXj2.4C9VAHDyQihuDC0irS", false),

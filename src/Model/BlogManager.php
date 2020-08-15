@@ -6,8 +6,6 @@ use PDO;
 
 class BlogManager extends Manager
 {
-
-    // RETOURNE LES 4 DERNIERS BLOGS
     public function lesDerniersBlogs()
     {
         $var = [];
@@ -21,7 +19,6 @@ class BlogManager extends Manager
         $req->closeCursor();
     }
 
-    // RETOURNE TOUS LES BLOGS
      public function listeDesBlogs()
     {
         $var = [];
@@ -35,7 +32,6 @@ class BlogManager extends Manager
         $req->closeCursor();
     }
 
-    // AFFICHE LE BLOG -> GET['ID']
     public function blog($id)
     {        
         $req = $this->getBdd()->prepare('SELECT * FROM blog WHERE id= ?');
@@ -59,7 +55,7 @@ class BlogManager extends Manager
         $req->closeCursor();
     }
 
-     // VERIFIE SI LE MAIL EXISTE
+    // Parcours tous les blogs existants [Utilisé pour accéder au blog suivant ou précédent]
     public function blogArray()
     {
         $var = [];
@@ -73,8 +69,6 @@ class BlogManager extends Manager
          $req->closeCursor();
     }
    
-    
-    // AJOUTER UN BLOG
     public function ajouterBlog($titre, $auteur, $chapo, $contenu, $image)
     {
         $req = $this->getBdd()->prepare('INSERT INTO blog SET titre = ?, auteur = ?, chapo = ?, contenu = ?, date = Now() , image = ? ');
@@ -89,7 +83,6 @@ class BlogManager extends Manager
         $req->closeCursor();
     }
 
-    // MODIFIER UN BLOG
     public function modifierBlog($titre, $chapo, $contenu,$id)
     {
         $req = $this->getBdd()->prepare('UPDATE blog SET titre = ?, chapo = ?, contenu = ?, dateMiseAJour = Now() WHERE id= ?');
@@ -103,7 +96,6 @@ class BlogManager extends Manager
         $req->closeCursor();
     }
  
-    // SUPPRIMER UN BLOG
     public function supprimerBlog($id)
     {
         $req = $this->getBdd()->prepare('DELETE FROM blog WHERE id = ?');
@@ -113,9 +105,4 @@ class BlogManager extends Manager
         return $req;
         $req->closeCursor();
     }
-
-
-
-    
-
 }

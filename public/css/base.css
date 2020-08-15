@@ -124,13 +124,10 @@ label[for="image"] {
   padding: 6px 2px 6px 2px;
   position: relative;
   top: 10px;
-}
-      
-label[for="image"] {
   margin: auto;
   max-width: 350px;
 }
-  
+
 label[for="image"]:hover {
   color: #41a4d1;
 }
@@ -145,7 +142,7 @@ button {
 }
 
 button:hover {
-  color:#41a4d1;
+  color: #41a4d1;
 }
 
 ul,
@@ -180,7 +177,7 @@ li {
   color: darkgreen;
   font-size: 110%;
   padding: 5px;
-  background-color: #15191c ;
+  background-color: #15191c;
   border: 1px solid darkgreen;
   max-width: 300px;
   margin: 5px auto;
@@ -217,7 +214,7 @@ header #admin {
 /* Footer + Menu du bas */
 footer {
   background-color: #15191c;
-  color:#ffffffb3;
+  color ffffffb3;
   text-align: center;
 }
 
