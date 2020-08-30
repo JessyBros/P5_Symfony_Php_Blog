@@ -4,9 +4,9 @@ namespace App\Services;
 class Mail{
 
     public function mailForm(){
-        $nom = isset($_POST['nom']) ? $_POST['nom'] : NULL;
-        $email  = isset($_POST['email']) ? $_POST['email'] : NULL;
-        $message  = isset($_POST['message']) ? $_POST['message'] : NULL;
+        $nom  = filter_input(INPUT_POST, 'nom');
+        $email  = filter_input(INPUT_POST, 'email');
+        $message  = filter_input(INPUT_POST, 'message');
         
         error_reporting(E_ALL); ini_set("display_errors", 1); //Display errors
         $message = "
