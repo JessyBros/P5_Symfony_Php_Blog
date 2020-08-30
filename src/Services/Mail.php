@@ -9,18 +9,11 @@ class Mail{
         $message  = isset($_POST['message']) ? $_POST['message'] : NULL;
         
         error_reporting(E_ALL); ini_set("display_errors", 1); //Display errors
-            if (get_magic_quotes_gpc()) {  
-                $message = stripslashes(htmlentities(
-                    "Nom : " . $nom . "<br>
-                    Email : " . $email . "<br>
-                    message : " . $message . "<br>"
-                ));
-            } else {  
-                $message = "
+        $message = "
                 Nom : " . $nom . "
                 Email : " . $email . "
                 message : " . $message;
-            }
+        
             //vérifie si l'hote autorise les \r
             if (preg_match("#@(hotmail|outlook|gmail).[a-z]{2,4}$#", "j.bros@hotmail.fr") ){
                 $passage_ligne = "\n";
@@ -58,15 +51,10 @@ class Mail{
     public function recupererCompteMail($email, $id)
     {
             error_reporting(E_ALL); ini_set("display_errors", 1); //Display errors
-                if (get_magic_quotes_gpc()){  
-                    $message = stripslashes(htmlentities(
-                        'Pour rénitiliser votre mot de passe, cliquez sur le lien en suivant
-                        https://jessy-bros.com/nouveau-mot-de-passe-' . $id . '-' . $email
-                    ));
-                } else {  
-                    $message = 'Pour rénitiliser votre mot de passe, cliquez sur le lien en suivant
-                    https://jessy-bros.com/nouveau-mot-de-passe-' . $id . '-' . $email;
-                }
+            
+            $message = 'Pour rénitiliser votre mot de passe, cliquez sur le lien en suivant
+            https://jessy-bros.com/nouveau-mot-de-passe-' . $id . '-' . $email;
+          
                 //vérifie si l'hote autorise les \r
                 if (preg_match("#@(hotmail|outlook|gmail).[a-z]{2,4}$#", $email)) {
                     $passage_ligne = "\n";
