@@ -17,12 +17,11 @@ class AccueilController
 
     public function accueil()
     {
-        if (!isset($_POST['submit'])) {
+        if (!filter_input(INPUT_POST, 'submit')) {
             $messageServeur="";
         } else {
             $mail = new Mail;
-            $mail-> mailform();
-            $messageServeur = isset($GLOBALS['$messageServeur']) ? $GLOBALS['$messageServeur'] : NULL;
+            $messageServeur = $mail-> mailform();
         }
         
         echo $this->twig->render('visiteur/accueil.twig',["lesDerniersBlogs" => $this->blogManager-> lesDerniersBlogs(),"messageServeur" => $messageServeur]);

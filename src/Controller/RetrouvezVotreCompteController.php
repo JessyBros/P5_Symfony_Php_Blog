@@ -20,12 +20,11 @@ class RetrouvezVotreCompteController
         $mail = new Mail;
 
         // début vérification email existant
-        if (isset($_POST["submit"])) {
+        if (filter_input(INPUT_POST, 'submit')) {
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
             $verificationEmailExistant = $this->utilisateurManager -> verificationEmailExistant($email);
             $id = $verificationEmailExistant->getId();
-            $mail ->recupererCompteMail($email,$id);
-            $messageServeur = isset($GLOBALS['$messageServeur']) ? $GLOBALS['$messageServeur'] : NULL;
+            $messageServeur = $mail ->recupererCompteMail($email,$id);
         } else {
             $messageServeur = "";
         }	

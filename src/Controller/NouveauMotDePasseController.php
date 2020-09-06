@@ -24,7 +24,7 @@ class NouveauMotDePasseController
         $verificationUtilisateurExist = $this->utilisateurManager->verificationUtilisateurExist($id, $email);
 
         // début rénitialiser le mot de passe
-        if (!isset($_POST["submit"])) {
+        if (!filter_input(INPUT_POST, 'submit')) {
             $messageServeur = "";
         } elseif ($mdp != $confirmMdp) {
             $messageServeur= '<p id="messageServeur">Les mot de passe ne sont pas identiques !</p>';

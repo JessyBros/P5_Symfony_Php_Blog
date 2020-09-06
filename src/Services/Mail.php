@@ -40,10 +40,11 @@ class Mail{
         $email_message .= $passage_ligne . "--" . $boundary . "--" . $passage_ligne; //Closing boundary
 
         if (mail($email_to,$email_subject, $email_message, $headers)) {
-            $GLOBALS['$messageServeur']  = '<p id="messageServeurTrue">Le mail a bien été envoyé </p>';
+            $messageServeur = '<p id="messageServeurTrue">Le mail a bien été envoyé </p>';
         } else {
-            $GLOBALS['$messageServeur'] = '<p id="messageServeur">Erreur, lors de l\'envoie du mail</p>';
+            $messageServeur = '<p id="messageServeur">Erreur, lors de l\'envoie du maixxl</p>';
         } 
+        return $messageServeur;
     }
 
 
@@ -83,10 +84,12 @@ class Mail{
             $email_message .= $passage_ligne . "--" . $boundary . "--" . $passage_ligne; //Closing boundary
 
             if (mail($email_to,$email_subject, $email_message, $headers)) {
-                $GLOBALS['$messageServeur'] = '<p id="messageServeurTrue">Le mail a bien été envoyé </p>';
+               $messageServeur = '<p id="messageServeurTrue">Le mail a bien été envoyé </p>';
             } else {
-                $GLOBALS['$messageServeur'] = '<p id="messageServeur">Erreur, lors de l\'envoie du mail</p>';
+                $messageServeur = '<p id="messageServeur">Erreur, lors de l\'envoie du mail</p>';
             }
+
+            return $messageServeur;
     }
     // fin mail récupération du compte
 }

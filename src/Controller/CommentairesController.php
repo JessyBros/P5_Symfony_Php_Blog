@@ -20,17 +20,17 @@ class CommentairesController
         $verificationConnexion = new VerificationConnexion;
         $verificationConnexion->verificationConnexion($this->twig);
 
-        $idCommentaire = isset($_POST['idCommentaire']) ? $_POST['idCommentaire'] : NULL;
+        $idCommentaire = filter_input(INPUT_POST, 'idCommentaire');
         
         // début valider un commentaire
-        if (isset($_POST["valider"])) {
+        if (filter_input(INPUT_POST, 'valider')) {
             $validerCommentaire = $this->commentaireManager -> validerCommentaire($idCommentaire);
             if ($validerCommentaire) {
                 $messageServeur = '<p id="messageServeurTrue">Le commentaire a bien été enregistré !</p>';
             } else {
                 $messageServeur = '<p id="messageServeur">Erreur lors de la validation du commentaire !</p>';
             }
-        } elseif (isset($_POST["supprimer"])) {
+        } elseif (filter_input(INPUT_POST, 'supprimer')) {
             $supprimerCommentaire = $this->commentaireManager -> supprimerCommentaire($idCommentaire);
             if ($supprimerCommentaire) {
                 $messageServeur ='<p id="messageServeurTrue">Le commentaire a bien été supprimé!</p>';

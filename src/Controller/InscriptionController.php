@@ -18,7 +18,7 @@ class InscriptionController
     public function inscription()
     {        
         // début inscription
-        if (isset($_POST["submit"])) {
+        if (filter_input(INPUT_POST, 'submit')) {
             $nom = filter_input(INPUT_POST, 'nom');
             $prenom = filter_input(INPUT_POST, 'prenom');
             $email = filter_input(INPUT_POST, 'email');
@@ -30,7 +30,7 @@ class InscriptionController
 
             if ($verificationEmailExistant) {
                 $messageServeur = '<p id="messageServeur">Erreur, l\'email existe déjà !</p>';
-            } elseif ($_POST["mdp"] != $_POST["confirmMdp"]) {
+            } elseif ($mdp != $confirmMdp) {
                 $messageServeur = '<p id="messageServeur">Les mots de passe ne sont pas identique.</p>';    
             } else {
                 $this->utilisateurManager-> inscription($nom, $prenom, $email, $mdp);

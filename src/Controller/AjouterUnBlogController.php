@@ -4,6 +4,8 @@ namespace App\Controller;
 use App\Model\BlogManager;
 use App\Services\VerificationConnexion;
 use App\Services\VerificationFichierImage;
+use App\Services\SessionObject;
+
 
 class AjouterUnBlogController
 {    
@@ -21,34 +23,25 @@ class AjouterUnBlogController
         $verificationConnexion = new VerificationConnexion;
         $verificationConnexion->verificationConnexion($this->twig);
         
+        $session = new SessionObject();
+        $auteur = filter_var($session->admin['admin']);
         $titre = filter_input(INPUT_POST, 'titre');
-        $auteur = filter_var($_SESSION['admin']);
         $chapo= filter_input(INPUT_POST, 'chapo');
         $contenu= filter_input(INPUT_POST, 'contenu');
-        $image  = isset($_FILES['image']['name']) ? $_FILES['image']['name'] : NULL;
+        $image  = isset($_FILES['image']) ? $_FILES['image'] : NULL;
             
         $verificationFichierImage = new VerificationFichierImage;
-        $verificationFichierImage ->verificationFichierImage();
+        $messageServeur = $verificationFichierImage ->verificationFichierImage($image);
 
-        $messageServeur = isset($GLOBALS['$messageServeur']) ? $GLOBALS['$messageServeur'] : NULL;
-        $imageValider = isset($GLOBALS['$imageValider']) ? $GLOBALS['$imageValider'] : NULL;
-
-        if (! isset($_POST["submit"])) {
+        if (!filter_input(INPUT_POST, 'submit')) {
             $messageServeur = "";
-        } elseif (!$imageValider) {
+        } elseif ($messageServeur != "imageValider") {
             // affiche le message d'erreur lié à la vérification d'image.
         } else{
-            $this->blogManager -> ajouterBlog($titre, $auteur, $chapo, $contenu, $image);
+            $this->blogManager -> ajouterBlog($titre, $auteur, $chapo, $contenu, $image['name']);
             $messageServeur ='<p id="messageServeurTrue">Le blog a bien été enregistré avec succès !</p>';
         }
 
         echo $this->twig->render('admin/ajouterBlog.twig',["messageServeur" => $messageServeur]);
     }
 }
-
-
-
-
-
-
-

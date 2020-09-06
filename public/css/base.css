@@ -48,13 +48,13 @@ a:focus {
   margin: 5px;
 }
 
+i {
+  font-size: 20px;
+}
+
 i:hover,
 a:hover {
   color: #41a4d1;
-}
-
-i {
-  font-size: 20px;
 }
 
 form {
