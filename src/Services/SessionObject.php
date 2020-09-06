@@ -11,3 +11,5 @@ class SessionObject
         $this->admin = &$_SESSION;
         $this->connecter = &$_SESSION;
         $this->id = &$_SESSION;
+    }
+}

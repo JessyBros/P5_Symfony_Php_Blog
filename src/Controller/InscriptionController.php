@@ -26,13 +26,14 @@ class InscriptionController
             $confirmMdp = filter_input(INPUT_POST, 'confirmMdp');
      
             $verificationEmailExistant = $this->utilisateurManager -> verificationEmailExistant($email);
-            $mdp = password_hash($mdp, PASSWORD_DEFAULT);
+            
 
             if ($verificationEmailExistant) {
                 $messageServeur = '<p id="messageServeur">Erreur, l\'email existe déjà !</p>';
             } elseif ($mdp != $confirmMdp) {
                 $messageServeur = '<p id="messageServeur">Les mots de passe ne sont pas identique.</p>';    
             } else {
+                $mdp = password_hash($mdp, PASSWORD_DEFAULT);
                 $this->utilisateurManager-> inscription($nom, $prenom, $email, $mdp);
                 $messageServeur ='<p id="messageServeurTrue">Votre inscription a été enregistré avec succès !</p>';
             } 
