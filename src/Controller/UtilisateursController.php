@@ -21,7 +21,7 @@ class UtilisateursController
         $verificationConnexion->verificationConnexion($this->twig);
 
         // début valider utilisateur inscrit
-        if (isset($_POST["confirmer"])) {
+        if (filter_input(INPUT_POST, 'confirmer')) {
             $idUtilisateur = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
             
             $confirmerUtilisateur = $this->utilisateurManager ->confirmerUtilisateur($idUtilisateur);
@@ -30,8 +30,8 @@ class UtilisateursController
             } else {
                 $messageServeur = '<p id="messageServeur">Erreur lors de la confirmation de l\'utilisateur !</p>';
             }
-        } elseif (isset($_POST["supprimer"])) {
-            $idUtilisateur  = isset($_POST['id']) ? $_POST['id'] : NULL;
+        } elseif (filter_input(INPUT_POST, 'supprimer')) {
+            $idUtilisateur  = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
             $supprimerUtilisateur = $this->utilisateurManager -> supprimerUtilisateur($idUtilisateur);
             if ($supprimerUtilisateur) {
                 $messageServeur = '<p id="messageServeurTrue">L\'utilisateur a bien été supprimé !</p>';

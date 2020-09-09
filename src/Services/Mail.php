@@ -4,9 +4,9 @@ namespace App\Services;
 class Mail{
 
     public function mailForm(){
-        $nom = isset($_POST['nom']) ? $_POST['nom'] : NULL;
-        $email  = isset($_POST['email']) ? $_POST['email'] : NULL;
-        $message  = isset($_POST['message']) ? $_POST['message'] : NULL;
+        $nom  = filter_input(INPUT_POST, 'nom');
+        $email  = filter_input(INPUT_POST, 'email');
+        $message  = filter_input(INPUT_POST, 'message');
         
         error_reporting(E_ALL); ini_set("display_errors", 1); //Display errors
         $message = "
@@ -40,10 +40,11 @@ class Mail{
         $email_message .= $passage_ligne . "--" . $boundary . "--" . $passage_ligne; //Closing boundary
 
         if (mail($email_to,$email_subject, $email_message, $headers)) {
-            $GLOBALS['$messageServeur']  = '<p id="messageServeurTrue">Le mail a bien été envoyé </p>';
+            $messageServeur = '<p id="messageServeurTrue">Le mail a bien été envoyé </p>';
         } else {
-            $GLOBALS['$messageServeur'] = '<p id="messageServeur">Erreur, lors de l\'envoie du mail</p>';
+            $messageServeur = '<p id="messageServeur">Erreur, lors de l\'envoie du maixxl</p>';
         } 
+        return $messageServeur;
     }
 
 
@@ -83,10 +84,12 @@ class Mail{
             $email_message .= $passage_ligne . "--" . $boundary . "--" . $passage_ligne; //Closing boundary
 
             if (mail($email_to,$email_subject, $email_message, $headers)) {
-                $GLOBALS['$messageServeur'] = '<p id="messageServeurTrue">Le mail a bien été envoyé </p>';
+               $messageServeur = '<p id="messageServeurTrue">Le mail a bien été envoyé </p>';
             } else {
-                $GLOBALS['$messageServeur'] = '<p id="messageServeur">Erreur, lors de l\'envoie du mail</p>';
+                $messageServeur = '<p id="messageServeur">Erreur, lors de l\'envoie du mail</p>';
             }
+
+            return $messageServeur;
     }
     // fin mail récupération du compte
 }

@@ -50,7 +50,7 @@ class BlogController extends VerificationBlogExistant
         $this->verificationBlogExistant($numeroDernierBlog->getId(), $id);
 
         // début ajouter un commentaire   
-        if (isset($_POST["submit"])) {
+        if (filter_input(INPUT_POST, 'submit')) {
             $auteur  = filter_input(INPUT_POST, 'auteur');
             $message  = filter_input(INPUT_POST, 'message');
             

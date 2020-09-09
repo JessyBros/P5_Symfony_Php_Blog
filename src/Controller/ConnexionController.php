@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Model\UtilisateurManager;
 use App\Services\VerificationConnexion;
+use App\Services\SessionObject;
 
 class ConnexionController
 {    
@@ -23,16 +24,17 @@ class ConnexionController
         $connexion = $this->utilisateurManager-> connexionAdministrateur($email);
         
         // début se connecter
-        if (!isset($_POST["submit"])) {
+        if (!filter_input(INPUT_POST, 'submit')) {
             $messageServeur = "";
         } elseif ($connexion == null) {
             $messageServeur= '<p id="messageServeur">Email ou mot de passe invalide.</p>';
         } elseif (!password_verify($mdp, $connexion->getMotDePasse())) {
             $messageServeur= '<p id="messageServeur">Email ou mot de passe invalide.</p>';
-        } else { 
-            $_SESSION['connecter'] = true;
-            $_SESSION['id'] = $connexion->getId();
-            $_SESSION['admin'] = $connexion->getPrenom() . " " . $connexion->getNom();
+        } else {
+            $session = new SessionObject();
+            $session->admin['admin'] = $connexion->getPrenom() . " " . $connexion->getNom();
+            $session->connecter['connecter'] = true;
+            $session->id['id'] = $connexion->getId();
             header('Location:/');
         }
         
@@ -40,11 +42,3 @@ class ConnexionController
     
     }
 }
-
-
-
-
-
-
-
-

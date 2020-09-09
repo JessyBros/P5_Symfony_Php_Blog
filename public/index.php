@@ -29,8 +29,8 @@ $twig = new \Twig\Environment($loader,[
 /* Ajout des sessions */
 $twig->addGlobal('session', $_SESSION);
 
-$uri = $_SERVER['REQUEST_URI'];
-switch ($uri) {
+$request_uri = filter_input(INPUT_SERVER, 'REQUEST_URI');
+switch ($request_uri) {
 	case "/":
 		$controller = new AccueilController($twig);
         $controller -> accueil();
@@ -39,7 +39,7 @@ switch ($uri) {
 		$controller = new ListeDesBlogsController($twig);
         $controller ->listeDesBlogs();
         break;
-	case (preg_match('/^\/blog\-(\d+)$/', $uri, $matches)? true : false):
+	case (preg_match('/^\/blog\-(\d+)$/', $request_uri, $matches)? true : false):
 		$controller = new BlogController($twig);
         $controller ->blog($matches);
 		break;
@@ -59,7 +59,7 @@ switch ($uri) {
 		$controller = new RetrouvezVotreCompteController($twig);
         $controller -> retrouvezVotreCompte();
 		break;
-	case (preg_match('/^\/nouveau\-mot\-de\-passe\-(\d+)\-(\D+)$/', $uri, $matches)? true : false):
+	case (preg_match('/^\/nouveau\-mot\-de\-passe\-(\d+)\-(\D+)$/', $request_uri, $matches)? true : false):
 		$controller = new NouveauMotDePasseController($twig);
         $controller -> nouveauMotDePasse($matches);
 		break;
@@ -71,7 +71,7 @@ switch ($uri) {
 		$controller = new ModifierBlogsController($twig);
         $controller -> modifierBlogs();
 		break;
-	case (preg_match('/^\/modifier\-blog\-(\d+)$/', $uri, $matches)? true : false):
+	case (preg_match('/^\/modifier\-blog\-(\d+)$/', $request_uri, $matches)? true : false):
 		$controller = new ModifierBlogController($twig);
         $controller -> modifierBlog($matches);
 		break;

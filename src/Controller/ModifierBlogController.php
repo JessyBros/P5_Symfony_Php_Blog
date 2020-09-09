@@ -6,7 +6,7 @@ use App\Model\CommentaireManager;
 use App\Services\VerificationConnexion;
 use App\Services\VerificationBlogExistant;
 
-class ModifierBlogController
+class ModifierBlogController extends VerificationBlogExistant
 {    
     private $twig;
     private $blogManager;
@@ -31,7 +31,7 @@ class ModifierBlogController
         $this->verificationBlogExistant($numeroDernierBlog->getId(), $id);
         
         // début modifier un blog
-        if (isset($_POST["modifier"])) {
+        if (filter_input(INPUT_POST, 'modifier')) {
             $titre = filter_input(INPUT_POST, 'titre');
             $chapo  = filter_input(INPUT_POST, 'chapo');
             $contenu   = filter_input(INPUT_POST, 'contenu');
@@ -49,10 +49,10 @@ class ModifierBlogController
         // fin modifier un blog
 
         // début supprimer blog
-        if (isset($_POST["supprimer"])) {
-            $image  = isset($_POST['image']) ? $_POST['image'] : NULL;
+        if (filter_input(INPUT_POST, 'supprimer')) {
+            $image  = filter_input(INPUT_POST, 'image');
             $this->blogManager -> supprimerBlog($id);
-            $supprimerCommentairesDuBlog = $commentaireManager -> supprimerCommentairesDuBlog($id);
+            $commentaireManager -> supprimerCommentairesDuBlog($id);
             $pathImage = 'images/blogs/' . $image;
             if (file_exists($pathImage)) {
                 unlink($pathImage);
@@ -63,27 +63,5 @@ class ModifierBlogController
 
         echo $this->twig->render('admin/modifierBlog.twig',["blog"=> $this->blogManager ->blog($id),"messageServeur" => $messageServeur]);
     }
-
-// FUNCTIONS SUPPLÉMENTAIRES
-    // VERIFIE SI LE BLOG EXISTE
-    private function verificationBlogExistant(int $id, int $blog_id)
-    {
-        if  ($blog_id < "1" || $blog_id > $id) {
-            if (preg_match('/^\/blog\-(\d+)$/', $_SERVER['REQUEST_URI'])) {
-                header("Location:/liste-des-blogs");
-            } elseif (preg_match('/^\/modifier\-blog\-(\d+)$/', $_SERVER['REQUEST_URI'])) {
-                header("Location:modifier-blogs");
-            } else {
-                header("Location:/");
-            } 
-        }
-    }
    
 }
-
-
-
-
-
-
-

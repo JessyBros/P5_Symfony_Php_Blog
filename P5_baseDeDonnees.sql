@@ -1,6 +1,3 @@
-CREATE DATABASE IF NOT EXISTS blog;
-USE blog;
-
 DROP TABLE IF EXISTS utilisateur;
 CREATE TABLE utilisateur
 (
