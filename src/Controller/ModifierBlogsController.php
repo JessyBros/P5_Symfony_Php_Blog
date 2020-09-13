@@ -20,7 +20,7 @@ class ModifierBlogsController
         $verificationConnexion = new VerificationConnexion;
         $verificationConnexion->verificationConnexion($this->twig);
 
-        echo $this->twig->render('admin/modifierBlogs.twig',["listeDesBlogs" => $this->blogManager -> listeDesBlogs()]);
+        print_r($this->twig->render('admin/modifierBlogs.twig',["listeDesBlogs" => $this->blogManager -> listeDesBlogs()]));
     }
 }
 

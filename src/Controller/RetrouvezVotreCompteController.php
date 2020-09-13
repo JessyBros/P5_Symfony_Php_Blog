@@ -30,7 +30,7 @@ class RetrouvezVotreCompteController
         }	
         // fin vérification email existant
         
-        echo $this->twig->render('visiteur/retrouvezVotreCompte.twig',["messageServeur" => $messageServeur]);
+        print_r($this->twig->render('visiteur/retrouvezVotreCompte.twig',["messageServeur" => $messageServeur]));
     }
 }
 

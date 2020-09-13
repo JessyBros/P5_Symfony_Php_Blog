@@ -66,7 +66,7 @@ class BlogController extends VerificationBlogExistant
         }	
         // fin ajouter un commentaire
             
-        echo $this->twig->render('visiteur/blog.twig',["next"=>$next, "previous"=>$previous,"blog"=> $this->blogManager ->blog($id),"numeroDernierBlog"=> $this->blogManager ->numeroDernierBlog(), "commentairesValider" =>$commentaireManager->commentairesValider($blog_id),"messageServeur" => $messageServeur]);
+        print_r($this->twig->render('visiteur/blog.twig',["next"=>$next, "previous"=>$previous,"blog"=> $this->blogManager ->blog($id),"numeroDernierBlog"=> $this->blogManager ->numeroDernierBlog(), "commentairesValider" =>$commentaireManager->commentairesValider($blog_id),"messageServeur" => $messageServeur]));
     }
 
 

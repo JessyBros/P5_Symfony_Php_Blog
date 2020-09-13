@@ -16,7 +16,7 @@ class ListeDesBlogsController
 
     public function listeDesBlogs()
     {
-        echo $this->twig->render('visiteur/blogs.twig',["listeDesBlogs" => $this->blogManager -> listeDesBlogs()]);
+        print_r($this->twig->render('visiteur/blogs.twig',["listeDesBlogs" => $this->blogManager -> listeDesBlogs()]));
     }
   
 }

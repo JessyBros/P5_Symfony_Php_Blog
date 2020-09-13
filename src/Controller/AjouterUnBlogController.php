@@ -42,6 +42,6 @@ class AjouterUnBlogController
             $messageServeur ='<p id="messageServeurTrue">Le blog a bien été enregistré avec succès !</p>';
         }
 
-        echo $this->twig->render('admin/ajouterBlog.twig',["messageServeur" => $messageServeur]);
+        print_r($this->twig->render('admin/ajouterBlog.twig',["messageServeur" => $messageServeur]));
     }
 }

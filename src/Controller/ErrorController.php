@@ -12,11 +12,11 @@ class ErrorController
 
     public function error404()
     {       
-        echo $this->twig->render('error/404.twig');
+        print_r($this->twig->render('error/404.twig'));
     }
     public function error403()
     {       
-        echo $this->twig->render('error/403.twig');
+        print_r($this->twig->render('error/403.twig'));
     }
 }
 

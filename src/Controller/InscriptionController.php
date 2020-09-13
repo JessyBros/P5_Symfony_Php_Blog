@@ -41,7 +41,7 @@ class InscriptionController
         $messageServeur ="";
         }
         
-        echo $this->twig->render('visiteur/inscription.twig',["messageServeur" => $messageServeur]);
+        print_r($this->twig->render('visiteur/inscription.twig',["messageServeur" => $messageServeur]));
     }
 }
 
