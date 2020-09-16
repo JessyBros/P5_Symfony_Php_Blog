@@ -38,7 +38,7 @@ class ConnexionController
             header('Location:/');
         }
         
-    echo $this->twig->render('visiteur/connexion.twig',["messageServeur" => $messageServeur]);
+        print_r($this->twig->render('visiteur/connexion.twig',["messageServeur" => $messageServeur]));
     
     }
 }

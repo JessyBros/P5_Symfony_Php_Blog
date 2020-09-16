@@ -42,7 +42,7 @@ class CommentairesController
         }	
         // fin valider un commentaire
 
-        echo $this->twig ->render('admin/commentaires.twig',["commentairesEnAttenteDeValidation" => $this->commentaireManager ->CommentairesEnAttenteDeValidation(),"messageServeur" => $messageServeur]);
+        print_r($this->twig ->render('admin/commentaires.twig',["commentairesEnAttenteDeValidation" => $this->commentaireManager ->CommentairesEnAttenteDeValidation(),"messageServeur" => $messageServeur]));
     }
 }
 

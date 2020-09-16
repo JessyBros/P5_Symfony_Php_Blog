@@ -43,7 +43,7 @@ class UtilisateursController
         }	
         // fin valider utilisateur inscrit
 
-        echo $this->twig ->render('admin/utilisateurs.twig',["listeUtilisateursInscrits" => $this->utilisateurManager ->listeUtilisateursInscrits(),"messageServeur" => $messageServeur]);
+        print_r($this->twig ->render('admin/utilisateurs.twig',["listeUtilisateursInscrits" => $this->utilisateurManager ->listeUtilisateursInscrits(),"messageServeur" => $messageServeur]));
     }
 
 }

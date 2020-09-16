@@ -36,7 +36,7 @@ class NouveauMotDePasseController
             $messageServeur= '<p id="messageServeurTrue">Enregistrement du nouveau mot de passe réussi !</p>';
         }	  
 
-        echo $this->twig->render('visiteur/nouveauMotDePasse.twig',["messageServeur" => $messageServeur]);
+        print_r($this->twig->render('visiteur/nouveauMotDePasse.twig',["messageServeur" => $messageServeur]));
     }
 }
 

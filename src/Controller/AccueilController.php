@@ -24,7 +24,7 @@ class AccueilController
             $messageServeur = $mail-> mailform();
         }
         
-        echo $this->twig->render('visiteur/accueil.twig',["lesDerniersBlogs" => $this->blogManager-> lesDerniersBlogs(),"messageServeur" => $messageServeur]);
+        print_r($this->twig->render('visiteur/accueil.twig',["lesDerniersBlogs" => $this->blogManager-> lesDerniersBlogs(),"messageServeur" => $messageServeur]));
     }
    
 }

@@ -61,7 +61,7 @@ class ModifierBlogController extends VerificationBlogExistant
         }
         // fin supprimer blog
 
-        echo $this->twig->render('admin/modifierBlog.twig',["blog"=> $this->blogManager ->blog($id),"messageServeur" => $messageServeur]);
+        print_r($this->twig->render('admin/modifierBlog.twig',["blog"=> $this->blogManager ->blog($id),"messageServeur" => $messageServeur]));
     }
    
 }
