@@ -14,10 +14,6 @@ class ErrorController
     {       
         print_r($this->twig->render('error/404.twig'));
     }
-    public function error403()
-    {       
-        print_r($this->twig->render('error/403.twig'));
-    }
 }
 
 
