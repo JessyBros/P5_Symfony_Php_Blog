@@ -1,4 +1,7 @@
 # P5_Symfony_Php_Blog
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/eb1caec3f28f47e89fad9c99360f111a)](https://app.codacy.com/manual/SiProdZz/P5_Symfony_Php_Blog?utm_source=github.com&utm_medium=referral&utm_content=SiProdZz/P5_Symfony_Php_Blog&utm_campaign=Badge_Grade_Dashboard)
+
 PROJECT 5 BLOG - Application developer PHP/Symfony.
 
 ## OBJECTIF 
