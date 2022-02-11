@@ -1,6 +1,6 @@
 {
     "require": {
-        "twig/twig": "^3.0"
+        "twig/twig": "^2.14"
     },
     
     "autoload": {
